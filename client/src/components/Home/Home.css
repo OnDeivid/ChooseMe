@@ -1,37 +1,42 @@
 main {
     background-color: var(--darkOrange);
+
     height: 100vh;
     width: 100vw;
+
     position: relative;
-    display: flex;
     justify-content: center;
+    display: flex;
     align-items: center;
+
+    box-shadow: inset 0px 10px 150px rgba(0, 0, 0, 0.7);
 }
 
 .container {
+    background-color: var(--darkWhite);
+
     width: 100%;
+    height: 45%;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--darkWhite);
-    height: 45%;
 }
 
 .catalog {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    width: 100%;
 }
 
-.topic-1,
-.topic-2,
-.topic-3,
-.topic-4 {
-
+.option-1,
+.option-2,
+.option-3 {
 
     width: 35%;
     height: 220px;
     margin: 5px;
+
     display: flex;
 
     border: solid 2px var(--darkWhite);
@@ -39,8 +44,8 @@ main {
 
     justify-content: center;
     align-items: center;
-
     text-align: center;
+
     font-size: 16px;
 
     -webkit-box-shadow: 0px 14px 11px -4px rgba(0, 0, 0, 0.75);
@@ -57,13 +62,15 @@ main {
 
 .twitch {
     background-color: #9146FF;
-
 }
 
-.topic-1:hover,
-.topic-2:hover,
-.topic-3:hover,
-.topic-4:hover {
+.onlyfans {
+    background-color: white;
+}
+
+.option-1:hover,
+.option-2:hover,
+.option-3:hover {
     margin-top: -5px;
     transition: 0.6s;
     -webkit-box-shadow: 0px 29px 26px -9px rgba(0, 0, 0, 0.75);
@@ -71,46 +78,76 @@ main {
     box-shadow: 0px 29px 26px -9px rgba(0, 0, 0, 0.75);
 }
 
-.imageHolder {
+.logos {
     display: flex;
     /* Enable Flexbox */
     align-items: center;
     /* Center vertically */
     justify-content: center;
     /* Center horizontally */
-    opacity: 0.5;
+    opacity: 0.39;
     transition: 0.6s;
 
-
+    position: relative;
     width: 100%;
     height: 100%;
 }
 
-.imageHolder:hover {
+.logos:hover {
     opacity: 1;
-    transition: 0.6s;
+    transition: 1s;
 }
 
-.imgOption-1 {
+.O-twitch {
     height: 90%;
+    width: 100%;
 
+    position: absolute;
     object-fit: contain;
+
     transition: 1s;
 
 }
 
-.imgOption-2 {
+.O-marvelDC {
     height: 100%;
+    width: 100%;
+
+    position: absolute;
     object-fit: contain;
+
+    z-index: 0;
+
     transition: 1s;
+}
+
+.O-onlyfans {
+    height: 100%;
+
+    position: absolute;
+    object-fit: contain;
+
+    z-index: 0;
+
+    transition: 1s;
+}
+
+.shadow {
+    height: 100%;
+    width: 100%;
+
     border-radius: 10px;
+
+    opacity: 0.67;
+
+    z-index: 2;
 }
 
 .marvelDC {
     border-radius: 10px;
     background: linear-gradient(to right,
-    #C63E45 0%,
-    #C63E45 49%,
-    #071B2F 53%,
-    #071B2F 100%);
+            #C63E45 2%,
+            #d54c53 49%,
+            #071B2F 53%,
+            #071B2F 100%);
 }
