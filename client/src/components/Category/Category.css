@@ -1,0 +1,193 @@
+/* Main container styles */
+.main-container {
+
+    background-color: var(--darkOrange);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0px 10px 150px rgba(0, 0, 0, 0.7);
+}
+
+/* Container for catalog items */
+.content-container {
+
+    background-color: var(--darkWhite);
+    border-radius: 10px;
+    width: 100%;
+
+    padding: 30px;
+}
+
+/* Catalog section styles */
+.catalog-section {
+    border-radius: 10px;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+}
+
+/* Individual catalog item styles */
+.catalog-item {
+
+    width: 35%;
+    height: 210px;
+    margin: 3px;
+    border: 2px solid var(--darkWhite);
+    border-radius: 10px;
+    box-shadow: 0px 14px 11px -4px rgba(0, 0, 0, 0.75);
+
+}
+
+/* Specific styles for catalog items */
+.twitch-item {
+    background-color: #9146FF;
+}
+
+.logo-container {
+    opacity: 0.39;
+    transition: opacity 0.6s;
+    position: relative;
+    width: 100%;
+
+    height: 100%;
+}
+
+.logo-container:hover {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.logo-image {
+
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    transition: 1s;
+    border-radius: 10px;
+}
+
+.shadow-overlay {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-radius: 10px;
+    opacity: 0.68;
+    z-index: 2;
+}
+
+/* Marvel DC specific styles */
+.comics-item {
+    border-radius: 10px;
+    background: linear-gradient(to right,
+            #C63E45 2%,
+            #d54c53 49%,
+            #071B2F 53%,
+            #071B2F 100%);
+
+}
+
+/* Hover effects for catalog items */
+.catalog-item:hover {
+    margin-top: -5px;
+    transition: margin-top 0.6s, box-shadow 0.6s;
+    box-shadow: 0px 29px 26px -9px rgba(0, 0, 0, 0.75);
+}
+
+
+/* Responsive adjustments */
+@media only screen and (max-width: 1024px) {
+    .content-container {
+        background-color: #071B2F;
+        height: 90vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    .catalog-section {
+        flex-direction: column;
+        height: fit-content;
+        width: 100%;
+        margin-left: -20px;
+        overflow-x: hidden;
+    }
+
+    .catalog-item:hover {
+        margin-top: 10px;
+
+    }
+
+    .catalog-item {
+        width: 100%;
+        margin: 10px;
+        height: 25vh;
+        min-height: 25vh;
+        margin-left: 0px;
+
+
+
+        border: 2px solid var(--darkWhite);
+        border-radius: 10px;
+        box-shadow: 0px 14px 11px -4px rgba(0, 0, 0, 0.75);
+        transition: 0.5s;
+    }
+
+    .twitch-item:hover,
+    .comics-item:hover,
+    .third-item:hover {
+        margin-top: 10px;
+        transition: margin-top 0.6s, box-shadow 0.6s;
+        box-shadow: 0px 29px 26px -9px rgba(0, 0, 0, 0.75);
+    }
+
+    .comics-item {
+        border-radius: 10px;
+        background: linear-gradient(to right,
+                #C63E45 2%,
+                #c34248 51%,
+                #071B2F 51.3%,
+                #071B2F 100%);
+    }
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 1300px) and (min-width:1200px) {
+    .comics-item {
+        border-radius: 10px;
+        background: linear-gradient(to right,
+                #C63E45 10%,
+                #c24148 50.8%,
+                #071B2F 51.3%,
+                #071B2F 100%);
+    }
+}
+
+/* Custom Scrollbar for WebKit browsers */
+::-webkit-scrollbar {
+    width: 2px;
+    /* Width of the scrollbar */
+    height: 12px;
+    /* Height of the scrollbar (for horizontal scrollbar) */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Background color of the track */
+    border-radius: 10px;
+    /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Color of the scrollbar thumb */
+    border-radius: 10px;
+    /* Rounded corners for the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Color of the thumb when hovered */
+}
