@@ -89,7 +89,9 @@
             #071B2F 100%);
 
 }
-
+.cars-item{
+    background-color: rgb(0, 0, 0);
+}
 /* Hover effects for catalog items */
 .catalog-item:hover {
     margin-top: -5px;

@@ -5,7 +5,7 @@ import data from '../../../const'
 import './Home.css'
 
 export default function Home() {
-    const row = ['twitch', 'comics', 'onlyfanse']
+    const row = ['twitch', 'comics', 'cars']
 
     return (
         <Category row={row} sectionsData={data.sectionsData} />

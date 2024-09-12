@@ -43,28 +43,37 @@
 .compare-image {
 
     position: relative;
-    width: 100%;
+    width: auto;
     max-height: 95%;
     min-height: 95%;
     max-width: 100%;
-    min-width: 100%;
-    z-index: 1;
+    min-width: 80%;
+    z-index: 3;
 
     margin-top: -17px;
 
     border-radius: 4px;
+
     left: 50%;
     transform: translateX(-50%);
+
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 
+    opacity: 0.78;
+
+
     -webkit-box-shadow: 0px 0.5px 14px -1px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0.5px 14px -1px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 0.5px 14px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0.5px 10px 1px rgba(0, 0, 0, 0.75);
 
     transition: box-shadow 1s;
     transition: -moz-box-shadow 1s;
     transition: -webkit-box-shadow 1s;
+
+
+    transition: opacity 1s;
+
 
 
 }
@@ -72,14 +81,15 @@
 .compare-image:hover {
     -webkit-box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.63);
     -moz-box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.63);
-    box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.63);
+    box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.63);
+    opacity: 1;
+    transition: opacity 1s;
 
-    transition: 0.5s;
+    transition: 1s;
 
 }
 
 .compare-item {
-    background-color: #9146FF;
     position: relative;
     top: 10px;
     padding-top: 20px;
@@ -89,9 +99,6 @@
     max-width: 100%;
 
     border-radius: 10px;
-
-    opacity: 0.78;
-    transition: opacity 1s;
 
 }
 
@@ -108,6 +115,7 @@
 }
 
 .info {
+    position: relative;
     background-color: #9146FF;
     color: rgb(255, 255, 255);
     margin: auto;
@@ -122,9 +130,25 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 
-
     font-size: 13px;
     text-align: center;
+    z-index: 3;
+
+
+
+    box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.75);
+
+    transition: box-shadow 1s;
+    transition: -moz-box-shadow 1s;
+    transition: -webkit-box-shadow 1s;
+}
+
+.info:hover {
+    -webkit-box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.63);
+    -moz-box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.63);
+    box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.63);
+
+    transition: 1s;
 }
 
 .logoLink {
@@ -135,15 +159,55 @@
     margin-top: -18px;
     color: rgb(57, 0, 55);
     text-align: center;
-    font-size: 20px;
+    font-size: 3vh;
+}
+
+.votes {
+    position: absolute;
+    width: auto;
+    max-height: 95%;
+    min-height: 94.3%;
+    max-width: 100%;
+    min-width: 100%;
+    z-index: 2;
+    background-color: rgb(0, 0, 0);
+    margin-top: -17px;
+    opacity: 0.78;
+    border-radius: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.winner {}
+
+.winner:hover {}
+
+.hiddenMenu {
+    background-color: rgb(255, 0, 0);
+    position: absolute;
+    z-index: 4;
+    display: flex;
+    cursor: pointer;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.hiddenMenu h1 {
+    margin: 7px;
+
+    font-size: 15px;
+}
+
+.hiddenMenu:hover {
+    background-color: green;
 }
 
 
 @media only screen and (max-width: 1024px) {
 
-    .main-containerComp {
-        /* background-color: black; */
-    }
+    .main-containerComp {}
 
     .name {
         font-size: 1px;
@@ -160,24 +224,24 @@
         background-color: rgb(255, 255, 255);
     }
 
-    
+
     .compare-image {
         width: 100%;
         max-width: 90%;
-        min-height: 10px;
+        min-height: 100%;
         margin-top: -13px;
         /* max-height: 90px;
         text-align: center; */
     }
 
     .compare-item {
-        top: 50%;
-        transform: translateY(-50%);
         position: relative;
         max-width: 70vh;
-        min-width: 30vh;
+        min-width: 50vh;
         height: 70vh;
         padding-bottom: 0.6vh;
+        margin-top: -5px;
+        margin-left: -0.5vh;
     }
 
     .content-containerComp {
@@ -185,7 +249,11 @@
     }
 
     .name {
-        font-size: 12px;
+        position: relative;
+        color: rgb(0, 0, 0);
+        font-size: 3vh;
+        top: -8px;
+        z-index: 2;
     }
 
     .logoLink {
@@ -196,14 +264,68 @@
 
     .info {
         font-size: 8px;
-        width: 100%;
+        width: 90%;
         height: 15px;
         position: relative;
         padding: 0px;
         padding-bottom: 5px;
         padding-top: 2px;
 
-        z-index: 1;
+        z-index: 3;
     }
 
+    .votes {
+        position: absolute;
+        width: auto;
+        max-height: 100%;
+        min-height: 80%;
+        max-width: 100%;
+        min-width: 90%;
+        z-index: 2;
+        opacity: 0.38;
+        background-color: red;
+        margin-top: -13px;
+        border-radius: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+
+    }
+}
+
+/* ----------- PHONE CSS ---------------*/
+@media only screen and (max-width: 767px) {
+    .catalog-sectionComp {
+        margin: 0 auto;
+        margin-top: 10%;
+        height: 60%;
+        background-color: rgb(143, 143, 143);
+      
+    }
+    
+    .content-containerComp {
+        height: 80%;
+        width: 100%;
+    }
+
+    .name {
+        margin-top: -30px;
+        z-index: 5;
+        color: rgb(0, 0, 0);
+    }
+
+    .compare-image {
+        position: relative;
+        top: -30px;
+        min-height: 31.5vh;
+    }
+
+    .compare-item {
+        min-width: 22.3vh;
+        max-width: 25vh;
+        min-height: 33vh;
+        max-height: 30vh;
+        margin: auto;
+    }
 }
