@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 import './Navbar.css'
+
 export default function Navbar({ setMenu }) {
     const navigate = useNavigate();
 

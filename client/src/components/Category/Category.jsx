@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import shadow from '../../assets/shadow6.png'
 import { useNavigate } from 'react-router-dom'
+
+import shadow from '../../assets/shadow6.png'
 
 import './Category.css'
 

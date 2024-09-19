@@ -6,7 +6,7 @@ export default function Streamers() {
     const row = ['player1', 'vs', 'player2']
     return (
         <div>
-            <Compare row={row} battles={data.streamersCompare} />
+            <Compare row={row} battles={data.streamersCompare} topic={'lol'}/>
         </div>
     )
 }

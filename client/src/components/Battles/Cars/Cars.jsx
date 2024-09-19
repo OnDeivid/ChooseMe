@@ -8,7 +8,7 @@ export default function Cars() {
 
     return (
         <div>
-            <Compare row={row} battles={data.carsCompare} />
+            <Compare row={row} battles={data.carsCompare} topic={'Cars'} />
         </div>
     )
 }

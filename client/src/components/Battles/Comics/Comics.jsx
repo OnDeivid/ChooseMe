@@ -6,7 +6,7 @@ export default function Comics() {
 
     return (
         <div>
-            <Compare row={row} battles={data.comicsCategory} />
+            <Compare row={row} battles={data.comicsCategory} topic={'Heros'} />
         </div>
     )
 }

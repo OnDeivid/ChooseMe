@@ -20,18 +20,18 @@
 }
 
 .endpoint:hover {
-    background-color: green;
+    background-color: rgb(69, 0, 208);
     transition: 0.3s;
 }
 
 .hide {
     background-color: red;
-    transition: 1s;
     cursor: pointer;
+    transition: 1s;
 }
 
 .hide:hover {
-    background-color: green;
+    background-color: rgb(69, 0, 208);
     transition: 1s;
 }
 
