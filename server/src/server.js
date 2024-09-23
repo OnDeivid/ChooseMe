@@ -1,30 +1,29 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-
-const whitelist = ['http://localhost:3000'];
+const connectDB = require('./config/db');
+const { getAll } = require('./service/competitor');
 
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1) {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by CORS'))
-        }
-    }
+    origin: 'http://localhost:5173',
+    optionsSuccessStatus: 200,
+    credentials: false
 }
 
 app.use(cors(corsOptions));
 
-app.get('/', (req, res) => {
-    res.send('Check your console for the IP address.');
+connectDB()
+
+
+app.get('/categorySuggestion/:name', async (req, res) => {
+
+    const sectionName = req.params.name
+    const data = await getAll(sectionName)
+    console.log(data)
+    res.status(200).json('its work we good ');
 });
 
-app.post('/categorySuggestion/:id', (req, res) => {
-    res.send(req.ip);
-});
-
-app.post('/choose/:id', (req, res) => {
+app.post('/choice/:category/:choosen', (req, res) => {
     res.send(req.ip);
 });
 

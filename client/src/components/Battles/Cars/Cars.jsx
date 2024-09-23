@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import data from '../../../const'
 import Compare from '../../Compare/Compare'
+import { GET } from '../../../api'
 
 export default function Cars() {
-    const row = ['AUDI', 'vs', 'BMW']
-
+    const name = 'cars'
+    useEffect(() => {
+        GET(`/categorySuggestion/${name}`).then(res => console.log(res))
+    }, [])
     return (
         <div>
-            <Compare row={row} battles={data.carsCompare} topic={'Cars'} />
+            <Compare battles={data.carsCompare} topic={'Cars'} />
         </div>
     )
 }

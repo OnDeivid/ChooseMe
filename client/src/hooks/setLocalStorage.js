@@ -22,8 +22,7 @@ export const useLocalStorage = (key, initialValue) => {
         setStoredValue(initialValue);
     };
 
-    if (!oldDate || oldDate < currentDate) {
-        localStorage.setItem('date', currentDate)
+    const deleteAllStoredData = () => {
 
         localStorage.removeItem('Heros')
         localStorage.removeItem('Cars')
@@ -35,5 +34,5 @@ export const useLocalStorage = (key, initialValue) => {
 
     }
 
-    return { storedValue, setItem, deleteItem };
+    return { storedValue, setItem, deleteItem, deleteAllStoredData };
 };

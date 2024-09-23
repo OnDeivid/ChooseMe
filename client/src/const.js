@@ -2,7 +2,6 @@ import twitch from '../src/assets/dTwitch.png'
 import comics from '../src/assets/marvelDC.png'
 import onlyfans from '../src/assets/brands.jpg'
 
-import kesha from '../src/assets/kesha1.jpg'
 import vs from '../src/assets/vs.png'
 import bausff from '../src/assets/baus.webp'
 
@@ -11,6 +10,15 @@ const sectionsData = [
     { name: 'comics', image: comics, },
     { name: 'cars', image: onlyfans }
 ]
+
+const sectionName = {
+    streamers_lol: 'lol',
+    streamers_csgo: 'lol',
+    cars: 'cars',
+    comics: 'comics'
+
+
+}
 
 
 

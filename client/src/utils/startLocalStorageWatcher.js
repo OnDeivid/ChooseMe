@@ -1,11 +1,13 @@
 export const startLocalStorageWatcher = () => {
+    
     const oldDate = localStorage.getItem('date')
-    const currentDate = new Date().toISOString().split('T')[0];
-
     const checkExpiration = () => {
+        const currentDate = new Date().toISOString().split('T')[0];
+
+
         if (oldDate < currentDate) {
             localStorage.setItem('date', currentDate)
-            console.log('successfully data removed');
+
         }
     }
 
