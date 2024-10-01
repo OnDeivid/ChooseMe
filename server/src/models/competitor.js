@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 
 const competitorSchema = new mongoose.Schema({
     section: { type: String },
-    model: { type: String },
+    option: { type: String },
     name: { type: String },
     votes: { type: Number },
     link: { type: String },
+    img: { type: String }
 })
 
 

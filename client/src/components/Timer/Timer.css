@@ -1,0 +1,102 @@
+.timerHolder {
+    position: fixed;
+    background-color: #0e0052;
+    width: 50vh;
+    height: 13.6vh;
+    top: 74.1vh;
+    /* Replace margin-top with top in vh */
+    z-index: 5;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 0.3vh solid yellow;
+    animation: onShowTimer 0.5s;
+}
+
+.close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0px 4px 1px 3px black;
+    height: 30px;
+    max-height: 25px;
+    transition: background-color 0.3s;
+}
+
+.hidenTimer {
+    display: none;
+}
+
+.close:hover {
+    background-color: black;
+    transition: 0.3s;
+}
+
+.close p {
+    margin-top: -8px;
+    text-align: center;
+    font-size: 10px;
+
+}
+
+.rules {
+    position: fixed;
+    top: 73.5vh;
+    width: 50vh;
+    height: 8vh;
+    text-align: center;
+    font-size: 5vh;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    animation: onShowTimerText 1s;
+
+}
+
+
+@keyframes onShowTimer {
+    0% {
+        height: 0px;
+        margin-top: 270px;
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1;
+
+        height: 13.6vh;
+    }
+}
+
+
+@media only screen and (min-resolution: 1.88dppx) and (max-resolution: 3.65dppx) {
+    .timerHolder {
+ 
+        top: 73.3vh;
+        animation: onShowTimer 0.5s;
+    }
+
+}
+
+@media only screen and (min-resolution: 3.66dppx) and (max-resolution: 6.65dppx) {
+    .timerHolder {
+        top: 73.3vh;
+        animation: onShowTimer 0.5s;
+    }
+}
+
+@keyframes onShowTimerText {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+
+    100% {
+        opacity: 1;
+    }
+
+}
+

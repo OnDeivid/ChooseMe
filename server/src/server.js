@@ -1,8 +1,15 @@
 const express = require('express');
 const cors = require('cors');
-const app = express();
 const connectDB = require('./config/db');
-const { getAll } = require('./service/competitor');
+const helmet = require('helmet')
+const rateLimit = require('express-rate-limit');
+const calculateTimeUntilNextDay = require('./utils/nextDayTimer');
+
+const { getSectionData, increaseCount } = require('./service/competitor');
+
+const app = express();
+
+
 
 const corsOptions = {
     origin: 'http://localhost:5173',
@@ -10,23 +17,79 @@ const corsOptions = {
     credentials: false
 }
 
+app.use(helmet())
 app.use(cors(corsOptions));
+app.use(express.json())
 
 connectDB()
+
+const limiterCars = rateLimit({
+    windowMs: calculateTimeUntilNextDay(),//until the next day
+    max: 1, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+const limiterLol = rateLimit({
+    windowMs: calculateTimeUntilNextDay(),//until the next day
+    max: 1, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+const limiterHeros = rateLimit({
+    windowMs: calculateTimeUntilNextDay(),//until the next day
+    max: 1, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
 
 
 app.get('/categorySuggestion/:name', async (req, res) => {
 
     const sectionName = req.params.name
-    const data = await getAll(sectionName)
-    console.log(data)
-    res.status(200).json('its work we good ');
+    const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
+
+    if (!isAjaxRequest) {
+        res.status(200).json('something get wrong');
+    } else {
+
+        try {
+            const data = await getSectionData(sectionName)
+            res.status(200).json(JSON.stringify(data));
+        } catch (err) {
+            res.status(404).json('something get wrong');
+        }
+    }
 });
 
-app.post('/choice/:category/:choosen', (req, res) => {
-    res.send(req.ip);
+app.put('/choice/lol/', limiterLol, async (req, res) => {
+    console.log(calculateTimeUntilNextDay())
+
+    const { name } = req.body
+    await increaseCount('lol', name)
+
+    res.status(200).json('lol');
+
+});
+
+app.put('/choice/cars/', limiterCars, async (req, res) => {
+    console.log(calculateTimeUntilNextDay())
+
+    const { name } = req.body
+    await increaseCount('cars', name)
+    res.status(200).json('cars');
+
+});
+
+app.put('/choice/heros/', limiterHeros, async (req, res) => {
+    console.log(calculateTimeUntilNextDay())
+
+    const { name } = req.body
+    await increaseCount('heros', name)
+
+    res.status(200).json('heros');
+
 });
 
 app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+    console.log('Server is running on port https://www.youtube.com/watch?v=jkNnceNJXz0');
 });

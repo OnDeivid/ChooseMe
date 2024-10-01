@@ -37,7 +37,7 @@
     border: 2px solid var(--darkWhite);
     border-radius: 10px;
     box-shadow: 0px 14px 11px -4px rgba(0, 0, 0, 0.75);
-
+    transition:  0.8s;
 }
 
 /* Specific styles for catalog items */

@@ -5,10 +5,12 @@ import Home from "./components/Battles/Home/Home"
 import Comics from "./components/Battles/Comics/Comics"
 import Lol from "./components/Battles/Streamers/Lol"
 import Cars from "./components/Battles/Cars/Cars"
+import { useState } from 'react'
 
 function App() {
+
   return (
-    
+
     <Routes>
 
       <Route path="/" element={<Home />} />

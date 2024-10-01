@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export function startCountdownToNextDay(deleteDataFunction, setCountDown) {
+export function startCountdownToNextDay(deleteDataFunction, setCountDown, navigate, setHideTimer) {
     // Get the current time
     const now = new Date();
 
@@ -9,7 +9,7 @@ export function startCountdownToNextDay(deleteDataFunction, setCountDown) {
     nextDay.setHours(24, 0, 0, 0); // Set to midnight
 
     // Calculate the difference in milliseconds
-    const timeDifference = nextDay - now;
+    const timeDifference = nextDay - now
 
     // Initialize the countdown
     updateCountdown(timeDifference);
@@ -21,7 +21,10 @@ export function startCountdownToNextDay(deleteDataFunction, setCountDown) {
 
         if (timeRemaining <= 0) {
             clearInterval(timerInterval);
-            deleteDataFunction();
+            deleteDataFunction()
+            setHideTimer(true)
+            navigate('/')
+            
             console.log("The next day has arrived!");
         } else {
 

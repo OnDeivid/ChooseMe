@@ -23,15 +23,15 @@ export const useLocalStorage = (key, initialValue) => {
     };
 
     const deleteAllStoredData = () => {
-
-        localStorage.removeItem('Heros')
-        localStorage.removeItem('Cars')
+        localStorage.removeItem('heros')
+        localStorage.removeItem('cars')
         localStorage.removeItem('lol')
-        localStorage.removeItem('Heros' + '-Choice')
-        localStorage.removeItem('Cars' + '-Choice')
+
+        localStorage.removeItem('heros' + '-Choice')
+        localStorage.removeItem('cars' + '-Choice')
         localStorage.removeItem('lol' + '-Choice')
 
-
+        console.log('data has been deleted')
     }
 
     return { storedValue, setItem, deleteItem, deleteAllStoredData };

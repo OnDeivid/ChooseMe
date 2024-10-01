@@ -1,13 +1,15 @@
-const baseURL ='http://localhost:3000';
+const baseURL = 'http://localhost:3000';
 
 async function requester(method, url, data = null) {
     const options = {
         method,
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
     };
 
     if (data) {
-        options.headers = { 
+        options.headers = {
             'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
         };
         options.body = JSON.stringify(data);
     }
