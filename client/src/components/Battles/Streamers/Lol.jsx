@@ -12,9 +12,7 @@ export default function Streamers() {
         GET(`/categorySuggestion/${name}`).then(res => setSectionData(JSON.parse(res)))
     }, [update])
     return (
-        <div>
-            <Compare battles={data.streamersCompare} setUpdate={setUpdate} sectionData={sectionData} topic={name} />
-        </div>
+        <Compare battles={data.streamersCompare} setUpdate={setUpdate} sectionData={sectionData} topic={name} />
     )
 }
 

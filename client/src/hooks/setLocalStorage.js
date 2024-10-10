@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 export const useLocalStorage = (key, initialValue) => {
-    const currentDate = new Date().toISOString().split('T')[0];
-    const oldDate = localStorage.getItem('date')
+    const navigate = useNavigate();
 
     const [storedValue, setStoredValue] = useState(() => {
         const item = localStorage.getItem(key);
@@ -22,17 +22,30 @@ export const useLocalStorage = (key, initialValue) => {
         setStoredValue(initialValue);
     };
 
-    const deleteAllStoredData = () => {
-        localStorage.removeItem('heros')
-        localStorage.removeItem('cars')
-        localStorage.removeItem('lol')
 
-        localStorage.removeItem('heros' + '-Choice')
-        localStorage.removeItem('cars' + '-Choice')
-        localStorage.removeItem('lol' + '-Choice')
+    const deleteAllStoredData = () => {
+        localStorage.clear()
 
         console.log('data has been deleted')
     }
 
-    return { storedValue, setItem, deleteItem, deleteAllStoredData };
+
+    
+    const checkDate = (currentDate) => {
+        const storedDate = localStorage.getItem('date')
+        console.log(currentDate)
+        console.log(storedDate)
+
+        if (storedDate) {
+            if (storedDate < currentDate) {
+                localStorage.setItem('date', currentDate);
+                navigate('/');
+                deleteAllStoredData();
+            }
+        } else {
+            localStorage.setItem('date', currentDate);
+        }
+    };
+
+    return { storedValue, setItem, deleteItem, deleteAllStoredData, checkDate };
 };

@@ -8,8 +8,8 @@
     box-shadow: inset 0px 10px 150px rgba(0, 0, 0, 0.7);
 }
 
+
 .content-containerComp {
-    /* background-color: rgb(216, 33, 33); */
     border-radius: 10px;
     width: 100%;
     padding: 20px;
@@ -43,20 +43,22 @@
 }
 
 .compare-image {
+
     position: relative;
     width: auto;
     max-height: 95%;
-    min-height: 99.5%;
+    min-height: 95%;
     max-width: 100%;
     min-width: 80%;
     z-index: 3;
 
-    margin-top: -17px;
 
     border-radius: 4px;
 
+    top: -2.5vh;
     left: 50%;
     transform: translateX(-50%);
+    box-sizing: border-box;
 
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -92,13 +94,11 @@
 
 .compare-item {
     position: relative;
-    top: 10px;
+    top: 0.5vh;
     padding-top: 20px;
-
-    max-height: 90.4%;
+    max-height: 97%;
     min-width: 30%;
     max-width: 100%;
-    margin-top: -2vh;
 
     border-radius: 10px;
 
@@ -110,63 +110,12 @@
 }
 
 
-.info a {
-    /* color: #1d0171; */
-    color: white;
-    font-size: 20px;
-}
-
-.info {
-    position: relative;
-    background-color: #9146FF;
-    color: rgb(255, 255, 255);
-    margin: auto;
-
-
-
-    padding-top: 5px;
-    padding-bottom: 10px;
-
-    width: 84.3%;
-    height: 3vh;
-    margin-top: -23.29px;
-
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-
-    font-size: 13px;
-    text-align: center;
-    z-index: 3;
-
-
-
-    box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.75);
-
-    transition: box-shadow 1s;
-    transition: -moz-box-shadow 1s;
-    transition: -webkit-box-shadow 1s;
-}
-
-.info:hover {
-    -webkit-box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.63);
-    -moz-box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.63);
-    box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.63);
-
-    transition: 1s;
-}
-
-.logoLink {
-    height: 100%;
-}
-
 .name {
-    margin-top: -18px;
+    margin-top: -20px;
     color: rgb(0, 0, 0);
     text-align: center;
     font-size: 3vh;
-    position: relative;
     padding-bottom: 2px;
-
     z-index: 5;
 }
 
@@ -213,18 +162,18 @@
 }
 
 .loser {
-    border-left: solid 1vh rgb(128, 0, 0);
-    border-right: solid 1vh rgb(128, 0, 0);
+    border-left: solid 1vh rgb(128, 0, 0, 1);
+    border-right: solid 1vh rgb(128, 0, 0, 1);
 
-    border-top: solid 0.8vh rgb(128, 0, 0);
-    border-bottom: solid 0.8vh rgb(128, 0, 0);
+    border-top: solid 0.8vh rgb(128, 0, 0, 1);
+    border-bottom: solid 0.8vh rgb(128, 0, 0, 1);
 
-    opacity: 0.40;
+
+    filter: opacity(0.38);
     transition: 1s;
 }
 
 .loser:hover {
-    filter: opacity(0.53);
     transition: 1s;
 }
 
@@ -297,7 +246,6 @@
 }
 
 .losertw {
-    opacity: 0.70;
     box-shadow: none;
 }
 
@@ -308,8 +256,11 @@
     left: 10px;
     top: 10px;
 
-    width: 25px;
-    height: 25px;
+    width: 4.5vw;
+    height: 10vh;
+    max-width: 20px;
+    max-height: 20px;
+
 
     border-radius: 20px;
     box-shadow: 0px 1px 1px 1px black;
@@ -342,16 +293,65 @@
     z-index: 2;
 }
 
-/* could be 1.25dppx */
-@media only screen and (min-resolution: 1.88dppx) and (max-resolution: 3.65dppx) {
+.donateLeft {
 
-    .name {
-        font-size: 1px;
-    }
+    transform: rotate(-90deg);
+    /* Rotates the text */
+    font-size: 2vw;
+    text-align: center;
+    align-content: center;
+
+    position: absolute;
+    /* Use fixed positioning to always stay on the left */
+    background-color: rgb(0, 8, 255);
+    left: -6.5vw;
+    padding-left: 10px;
+    padding-right: 15px;
+
+    box-shadow: 0px 0.4px 5px 0.3px rgb(0, 0, 0);
+
+    font-weight: bold;
+    z-index: 5;
+}
+
+
+.donate:hover {
+    cursor: pointer;
+}
+
+.donateRight {
+    font-size: 2vw;
+    text-align: center;
+    align-content: center;
+
+    background-color: rgb(0, 8, 255);
+
+    position: absolute;
+    right: -6.5vw;
+
+
+    padding-left: 10px;
+    padding-right: 15px;
+
+
+    box-shadow: 0px 0.4px 5px 0.3px rgb(0, 0, 0);
+
+    font-weight: bold;
+    z-index: 5;
+
+    transform: rotate(-270deg);
+
+}
+
+
+
+/* could be 1.25dppx */
+/* @media only screen and (min-resolution: 1.88dppx) and (max-resolution: 3.65dppx) {
+
 
     .content-containerComp {
         height: 20vh;
-        /* background-color: rgb(109, 95, 95); */
+       
         padding: 10px;
     }
 
@@ -362,21 +362,20 @@
 
 
     .compare-image {
-        width: 100%;
+        top: 1vh;
+        width: 83%;
         max-width: 90%;
         min-height: 100%;
         margin-top: -13px;
-        /* max-height: 90px;
-        text-align: center; */
+    
     }
 
     .compare-item {
         position: relative;
-        max-width: 70vh;
-        min-width: 50vh;
         height: 70vh;
+        max-height: 67vh;
         padding-bottom: 0.6vh;
-        margin-top: -3vh;
+        margin-top: 0vh;
         margin-left: -.5vh;
     }
 
@@ -388,7 +387,7 @@
         position: relative;
         color: rgb(0, 0, 0);
         font-size: 3vh;
-        top: -1.2vh;
+        top: -0.2vh;
         z-index: 2;
     }
 
@@ -418,8 +417,7 @@
     }
 
     .loser {
-        border: solid 3px rgb(255, 0, 0);
-        opacity: 0.40;
+        border: solid 3px rgb(255, 0, 0, 1);
         transition: 1s;
     }
 
@@ -442,13 +440,15 @@
 
     }
 
-}
+} */
 
 
 @media only screen and (min-resolution: 3.66dppx) and (max-resolution: 6.65dppx) {
 
     .name {
         font-size: 1px;
+        position: relative;
+        margin-top: -8vh;
     }
 
     .content-containerComp {
@@ -466,8 +466,8 @@
     .compare-image {
         width: 100%;
         max-width: 90%;
-        min-height: 100%;
-        margin-top: -13px;
+        min-height: 110%;
+        margin-top: -6.7vh;
         /* max-height: 90px;
         text-align: center; */
     }
@@ -476,9 +476,9 @@
         position: relative;
         max-width: 70vh;
         min-width: 50vh;
-        height: 63vh;
+        max-height: 58vh;
         padding-bottom: 0.6vh;
-        margin-top: -3vh;
+        margin-top: 2vh;
         margin-left: -.5vh;
     }
 
@@ -490,27 +490,9 @@
         position: relative;
         color: rgb(0, 0, 0);
         font-size: 3vh;
-        top: -7.2px;
+        top: -4vh;
         z-index: 2;
-        padding-bottom: 2px;
-    }
-
-    .logoLink {
-        height: 10px;
-        margin-top: -30px;
-
-    }
-
-    .info {
-        font-size: 8px;
-        height: 3.2vh;
-        width: 92%;
-        position: relative;
-        padding: 0px;
-        padding-bottom: 5px;
-        margin-top: -8px;
-        padding-top: 1px;
-        z-index: 3;
+        padding-bottom: 3vh;
     }
 
     .winner {
@@ -520,8 +502,8 @@
     }
 
     .loser {
-        border: solid 1vh rgb(255, 0, 0);
-        opacity: 0.40;
+        border: solid 1vh rgb(255, 0, 0, 1);
+
         transition: 1s;
     }
 
@@ -544,6 +526,9 @@
 
     }
 
+    .idea {
+        margin-top: -7px;
+    }
 
     .hiddenMenu {
         background-color: rgb(255, 0, 0);
@@ -561,13 +546,45 @@
     }
 
     .hiddenMenu h1 {
-        margin: 7px;
-        font-size: 6px;
+        margin: 4px;
+        width: fit-content;
+        font-size: 5px;
+    }
+
+    .donateRight {
+        border-radius: 10px;
+    }
+
+    .donateLeft {
+        border-radius: 10px;
     }
 }
 
 /* ----------- PHONE CSS ---------------*/
 @media only screen and (min-width: 320px) and (max-width: 767px) and (min-height: 658px) and (max-height: 1024px) {
+
+
+    .donateLeft {
+
+        transform: rotate(0deg);
+        width: 30%;
+        height: 4vh;
+        top: 58vh;
+        left: 7vw;
+
+        transform: translateX(10%);
+    }
+
+    .donateRight {
+        transform: rotate(0deg);
+        width: 30%;
+        height: 4vh;
+        top: 58vh;
+        right: 7vw;
+
+        transform: translateX(-10%);
+    }
+
     .catalog-sectionComp {
         margin: 0 auto;
         margin-top: 10%;
@@ -593,15 +610,17 @@
         position: relative;
         top: -20px;
         min-height: 31.5vh;
+        max-width: 43vw;
     }
 
     .compare-item {
-        min-width: 22.3vh;
-        max-width: 25vh;
+        min-width: 23vh;
+        max-width: 23.5vh;
         min-height: 33vh;
         max-height: 30vh;
         margin: auto;
     }
+
 
     .voted {
         font-size: 2vh;
@@ -622,13 +641,119 @@
     }
 
     .loser {
-        border: solid 0.5vh rgb(255, 0, 0);
+        border: solid 0.5vh rgb(255, 0, 0, 1);
         opacity: 0.40;
         transition: 1s;
     }
 
 
 
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+
+    .donateRight {
+        transform: rotate(-270deg);
+
+        font-size: 2vw;
+        text-align: center;
+        align-content: center;
+
+        position: absolute;
+
+
+        top: 40.3vh;
+        right: -6.5vw;
+
+
+        z-index: 5;
+
+
+    }
+
+    .donateLeft {
+        background-color: green;
+        transform: rotate(-90deg);
+        /* Rotates the text by 180 degrees */
+        font-size: 2vw;
+        text-align: center;
+        align-content: center;
+
+        position: absolute;
+
+
+        top: 40.3vh;
+        left: -6.5vw;
+        z-index: 5;
+    }
+
+    .compare-item {
+        top: 0vh;
+    }
+
+    .catalog-sectionComp {
+        height: 80%;
+    }
+
+
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    .compare-item {
+        position: relative;
+        top: 0.5vh;
+        padding-top: 20px;
+        max-height: 70%;
+        max-width: 45vw;
+
+        border-radius: 10px;
+    }
+
+    .voted {
+        font-size: 4vh;
+
+    }
+
+    .votes-count {
+        font-size: 4vh;
+    }
+
+    .donateRight {
+        transform: rotate(-0deg);
+
+        background-color: rgb(19, 47, 5);
+        font-size: 2vw;
+        text-align: center;
+        align-content: center;
+
+        position: fixed;
+
+        width: 25vh;
+        height: 6vh;
+        top: 70.3vh;
+        right: 9%;
+
+
+    }
+
+    .donateLeft {
+        transform: rotate(0deg);
+        /* Rotates the text by 180 degrees */
+        background-color: rgb(0, 60, 255);
+        font-size: 2vw;
+        text-align: center;
+        align-content: center;
+
+        position: fixed;
+
+        width: 25vh;
+        height: 6vh;
+        top: 70.3vh;
+        left: 9%;
+
+
+    }
 }
 
 
@@ -646,5 +771,21 @@
         opacity: 1;
         font-size: 6vh;
 
+    }
+}
+
+
+@keyframes onDonateButton {
+    0% {
+        background-color: rgb(163, 2, 2);
+    }
+
+    50% {
+
+        background-color: red;
+    }
+
+    100% {
+        background-color: rgb(163, 2, 2);
     }
 }

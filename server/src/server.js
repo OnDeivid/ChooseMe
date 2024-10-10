@@ -1,4 +1,5 @@
 const express = require('express');
+const moment = require('moment-timezone');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const helmet = require('helmet')
@@ -43,6 +44,11 @@ const limiterHeros = rateLimit({
 });
 
 
+
+app.get('/getDate', (req, res) => {
+    const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
+    res.status(200).json(JSON.stringify(currentDate));
+})
 app.get('/categorySuggestion/:name', async (req, res) => {
 
     const sectionName = req.params.name

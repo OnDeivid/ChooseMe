@@ -3,13 +3,15 @@ import { useNavigate } from 'react-router-dom'
 import { startCountdownToNextDay } from '../../utils/countDown';
 import './Timer.css'
 
-export default function Timer({ deleteStoreData, setNextDay }) {
+export default function Timer({ deleteStoreData, ms }) {
     const navigate = useNavigate();
     const [countDown, setCountDown] = useState()
     const [hideTimer, setHideTimer] = useState(false)
 
     useEffect(() => {
         const timerInterval = startCountdownToNextDay(deleteStoreData, setCountDown, navigate, setHideTimer);
+
+
         return () => {
             clearInterval(timerInterval.timerInterval);
         };

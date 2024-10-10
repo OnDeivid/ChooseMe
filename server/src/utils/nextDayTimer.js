@@ -1,7 +1,12 @@
+const moment = require('moment-timezone');
+
 const calculateTimeUntilNextDay = () => {
-    const now = new Date();
-    const nextDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
-    return nextDay - now;
+    const now = moment.tz('Europe/Berlin');
+    const nextDay = moment.tz('Europe/Berlin').add(1, 'days').startOf('day');
+
+    const difference = nextDay.diff(now);
+    console.log(difference)
+    return difference;
 };
 
 module.exports = calculateTimeUntilNextDay;
