@@ -13,7 +13,10 @@ const app = express();
 
 
 const corsOptions = {
-    origin: 'https://choose-me-deivids-projects-ec29e37b.vercel.app',
+    origin: [
+        'https://choose-me-deivids-projects-ec29e37b.vercel.app',
+        'http://localhost:5173/'
+    ],
     optionsSuccessStatus: 200,
     credentials: false
 }
@@ -43,13 +46,18 @@ const limiterHeros = rateLimit({
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     res.send('https://www.youtube.com/watch?v=jkNnceNJXz0')
 })
 
 app.get('/getDate', (req, res) => {
     const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
-    res.status(200).json(JSON.stringify(currentDate));
+    try {
+        res.status(200).json(JSON.stringify(currentDate));
+
+    } catch {
+        res.status(404).json('server error');
+    }
 })
 app.get('/categorySuggestion/:name', async (req, res) => {
 
