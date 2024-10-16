@@ -43,7 +43,9 @@ const limiterHeros = rateLimit({
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
-
+app.get('/',(req,res)=>{
+    res.send('https://www.youtube.com/watch?v=jkNnceNJXz0')
+})
 
 app.get('/getDate', (req, res) => {
     const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
