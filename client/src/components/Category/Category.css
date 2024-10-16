@@ -9,6 +9,25 @@
     box-shadow: inset 0px 10px 150px rgba(0, 0, 0, 0.7);
 }
 
+.topADS{
+    position: fixed;
+    top: 10px;
+    left: 0px;
+
+    background-color: rgb(255, 251, 0);
+    width: 100vw;
+    height: 10vh;
+}
+.bottomADS-category {
+    position: fixed;
+    left: 0px;
+    bottom: 8vh;
+
+    background-color: rgb(255, 251, 0);
+    width: 100vw;
+    height: 10vh;
+}
+
 /* Container for catalog items */
 .content-container {
 

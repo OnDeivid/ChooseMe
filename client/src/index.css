@@ -34,12 +34,11 @@ a:hover {
 }
 
 body {
-  overflow: auto;
+  overflow-y: scroll;
   position: fixed;
   display: flex;
   place-items: center;
   min-height: 100vh;
-  overflow: hidden;
 }
 
 h1 {
