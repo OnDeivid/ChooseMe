@@ -6,7 +6,7 @@ const helmet = require('helmet')
 const rateLimit = require('express-rate-limit');
 const calculateTimeUntilNextDay = require('./utils/nextDayTimer');
 
-const { getSectionData, increaseCount } = require('./service/competitor');
+const { getSectionData, increaseCount, getAllSectionData } = require('./service/competitor');
 
 const app = express();
 
@@ -43,8 +43,9 @@ const limiterHeros = rateLimit({
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
-app.get('/', (req, res) => {
-    res.send('https://www.youtube.com/watch?v=jkNnceNJXz0')
+app.get('/', async (req, res) => {
+    const data = await getAllSectionData();
+    res.send(data)
 })
 
 app.get('/getDate', (req, res) => {
