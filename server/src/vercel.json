@@ -1,0 +1,44 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "server.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/",
+            "dest": "/server.js"
+        },
+        {
+            "src": "/getDate",
+            "dest": "/server.js"
+        },
+        {
+            "src": "/choice/lol",
+            "methods": [
+                "PUT"
+            ],
+            "dest": "/server.js"
+        },
+        {
+            "src": "/choice/cars",
+            "methods": [
+                "PUT"
+            ],
+            "dest": "/server.js"
+        },
+        {
+            "src": "/choice/heros",
+            "methods": [
+                "PUT"
+            ],
+            "dest": "/server.js"
+        },
+        {
+            "src": "/:name",
+            "dest": "/server.js"
+        }
+    ]
+}
