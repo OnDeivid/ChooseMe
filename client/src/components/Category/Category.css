@@ -1,6 +1,5 @@
 /* Main container styles */
 .main-container {
-
     background-color: var(--darkOrange);
     height: 100vh;
     width: 100vw;
@@ -37,7 +36,7 @@
     border: 2px solid var(--darkWhite);
     border-radius: 10px;
     box-shadow: 0px 14px 11px -4px rgba(0, 0, 0, 0.75);
-    transition:  0.8s;
+    transition: 0.8s;
 }
 
 /* Specific styles for catalog items */
@@ -89,9 +88,11 @@
             #071B2F 100%);
 
 }
-.cars-item{
+
+.cars-item {
     background-color: rgb(0, 0, 0);
 }
+
 /* Hover effects for catalog items */
 .catalog-item:hover {
     margin-top: -5px;
@@ -104,14 +105,15 @@
 @media only screen and (max-width: 1024px) {
     .content-container {
         background-color: #071B2F;
-        height: 90vh;
+        height: 100vh;
         overflow-y: scroll;
         overflow-x: hidden;
     }
 
     .catalog-section {
         flex-direction: column;
-        height: fit-content;
+        height: 70vh;
+        margin: 80px;
         width: 100%;
         margin-left: -20px;
         overflow-x: hidden;
@@ -125,12 +127,9 @@
     .catalog-item {
         width: 100%;
         margin: 10px;
-        height: 25vh;
-        min-height: 25vh;
+        height: 20vh;
+        min-height: 10vh;
         margin-left: 0px;
-
-
-
         border: 2px solid var(--darkWhite);
         border-radius: 10px;
         box-shadow: 0px 14px 11px -4px rgba(0, 0, 0, 0.75);
