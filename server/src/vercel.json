@@ -17,23 +17,14 @@
         },
         {
             "src": "/choice/lol",
-            "methods": [
-                "PUT"
-            ],
             "dest": "/server.js"
         },
         {
             "src": "/choice/cars",
-            "methods": [
-                "PUT"
-            ],
             "dest": "/server.js"
         },
         {
             "src": "/choice/heros",
-            "methods": [
-                "PUT"
-            ],
             "dest": "/server.js"
         },
         {
