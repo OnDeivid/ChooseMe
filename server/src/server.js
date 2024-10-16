@@ -52,13 +52,13 @@ app.get('/', async (req, res) => {
 app.get('/getDate', (req, res) => {
     const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
     try {
-        res.status(200).json(JSON.stringify(currentDate));
+        res.status(200).json(currentDate);
 
     } catch {
         res.status(404).json('server error');
     }
 })
-app.get('/categorySuggestion/:name', async (req, res) => {
+app.get('/:name', async (req, res) => {
 
     const sectionName = req.params.name
     // const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
@@ -69,8 +69,7 @@ app.get('/categorySuggestion/:name', async (req, res) => {
 
     try {
         const data = await getSectionData(sectionName)
-        console.log(data)
-        res.status(200).json(JSON.stringify(data));
+        res.status(200).json(data);
     } catch (err) {
         res.status(404).json('123');
     }
@@ -92,6 +91,7 @@ app.put('/choice/cars/', limiterCars, async (req, res) => {
 
     const { name } = req.body
     await increaseCount('cars', name)
+
     res.status(200).json('cars');
 
 });
