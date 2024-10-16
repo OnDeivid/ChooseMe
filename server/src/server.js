@@ -6,7 +6,7 @@ const helmet = require('helmet')
 const rateLimit = require('express-rate-limit');
 const calculateTimeUntilNextDay = require('./utils/nextDayTimer');
 
-const { getSectionData, increaseCount, getAllSectionData } = require('./service/competitor');
+const { getSectionData, increaseCount } = require('./service/competitor');
 
 const app = express();
 
@@ -43,36 +43,38 @@ const limiterHeros = rateLimit({
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
-app.get('/', async (req, res) => {
-    const data = await getAllSectionData();
-    res.send(data)
+app.get('/', (req, res) => {
+    res.send('home')
 })
 
 app.get('/getDate', (req, res) => {
-    const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
-    try {
-        res.status(200).json(JSON.stringify(currentDate));
+    res.send('getDate')
 
-    } catch {
-        res.status(404).json('server error');
-    }
+    // const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
+    // try {
+    //     res.status(200).json(JSON.stringify(currentDate));
+
+    // } catch {
+    //     res.status(404).json('server error');
+    // }
 })
 app.get('/categorySuggestion/:name', async (req, res) => {
+    res.send('categoryName')
 
-    const sectionName = req.params.name
-    const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
+    // const sectionName = req.params.name
+    // const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
 
-    if (!isAjaxRequest) {
-        res.status(200).json('something get wrong');
-    } else {
+    // if (!isAjaxRequest) {
+    //     res.status(200).json('something get wrong');
+    // } else {
 
-        try {
-            const data = await getSectionData(sectionName)
-            res.status(200).json(JSON.stringify(data));
-        } catch (err) {
-            res.status(404).json('something get wrong');
-        }
-    }
+    //     try {
+    //         const data = await getSectionData(sectionName)
+    //         res.status(200).json(JSON.stringify(data));
+    //     } catch (err) {
+    //         res.status(404).json('something get wrong');
+    //     }
+    // }
 });
 
 app.put('/choice/lol/', limiterLol, async (req, res) => {
