@@ -49,14 +49,16 @@ app.get('/', async (req, res) => {
     res.status(200).json('we good');
 })
 
-app.get('/getDate', (req, res) => {
-    const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
-    try {
-        res.status(200).json(currentDate);
+app.get('/getDate', async (req, res) => {
+    // const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
+    // try {
+    let data = await getAllSectionData()
 
-    } catch {
-        res.status(404).json('server error');
-    }
+    res.status(200).json(data);
+    
+    // } catch {
+    //     res.status(404).json('server error');
+    // }
 })
 app.get('/:name', async (req, res) => {
 
