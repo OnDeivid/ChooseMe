@@ -6,7 +6,7 @@ const helmet = require('helmet')
 const rateLimit = require('express-rate-limit');
 const calculateTimeUntilNextDay = require('./utils/nextDayTimer');
 
-const { getSectionData, increaseCount } = require('./service/competitor');
+const { getSectionData, increaseCount, getAllSectionData } = require('./service/competitor');
 
 const app = express();
 
@@ -43,8 +43,11 @@ const limiterHeros = rateLimit({
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
-app.get('/', (req, res) => {
-    res.send('home')
+app.get('/', async (req, res) => {
+    let data = await getAllSectionData()
+    console.log(data)
+    res.status(200).json(JSON.stringify(data));
+
 })
 
 app.get('/getDate', (req, res) => {
@@ -56,25 +59,26 @@ app.get('/getDate', (req, res) => {
         res.status(404).json('server error');
     }
 })
-app.get('/:name', async (req, res) => {
+app.get('/categorySuggestion/:name', async (req, res) => {
 
     const sectionName = req.params.name
-    const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
+    // const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
 
-    if (!isAjaxRequest) {
-        res.status(200).json('something get wrong');
-    } else {
+    // if (!isAjaxRequest) {
+    //     res.status(200).json('something get wrong');
+    // } else {
 
         try {
             const data = await getSectionData(sectionName)
+            console.log(data)
             res.status(200).json(JSON.stringify(data));
         } catch (err) {
-            res.status(404).json('something get wrong');
+            res.status(404).json('123');
         }
-    }
+    // }
 });
 
-app.put('/lol', limiterLol, async (req, res) => {
+app.put('/choice/lol/', limiterLol, async (req, res) => {
     console.log(calculateTimeUntilNextDay())
 
     const { name } = req.body
@@ -84,7 +88,7 @@ app.put('/lol', limiterLol, async (req, res) => {
 
 });
 
-app.put('/cars', limiterCars, async (req, res) => {
+app.put('/choice/cars/', limiterCars, async (req, res) => {
     console.log(calculateTimeUntilNextDay())
 
     const { name } = req.body
@@ -93,7 +97,7 @@ app.put('/cars', limiterCars, async (req, res) => {
 
 });
 
-app.put('/heros', limiterHeros, async (req, res) => {
+app.put('/choice/heros/', limiterHeros, async (req, res) => {
     console.log(calculateTimeUntilNextDay())
 
     const { name } = req.body
