@@ -34,8 +34,6 @@ a:hover {
 }
 
 body {
-  
-
   overflow: auto;
   position: fixed;
   display: flex;
