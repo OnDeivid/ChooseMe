@@ -8,7 +8,19 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
+            "src": "/getDate",
+            "dest": "src/server.js"
+        },
+        {
+            "src": "/categorySuggestion/(.*)",
+            "dest": "src/server.js"
+        },
+        {
+            "src": "/choice/(.*)",
+            "dest": "src/server.js"
+        },
+        {
+            "src": "/",
             "dest": "src/server.js"
         }
     ]
