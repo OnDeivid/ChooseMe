@@ -46,7 +46,7 @@ const limiterHeros = rateLimit({
 app.get('/', async (req, res) => {
     let data = await getAllSectionData()
 
-    res.status(200).json({ data });
+    res.status(200).json('we good');
 })
 
 app.get('/getDate', (req, res) => {
