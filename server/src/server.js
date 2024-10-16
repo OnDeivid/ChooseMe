@@ -13,7 +13,7 @@ const app = express();
 
 
 const corsOptions = {
-    origin: 'https://choose-me-deivids-projects-ec29e37b.vercel.app/',
+    origin: 'https://choose-me-deivids-projects-ec29e37b.vercel.app',
     optionsSuccessStatus: 200,
     credentials: false
 }
