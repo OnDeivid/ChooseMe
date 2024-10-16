@@ -570,7 +570,7 @@
         top: 10px;
         left: 0px;
 
-        background-color: red;
+        background-color: rgb(255, 251, 0);
         width: 100vw;
         height: 10vh;
     }
@@ -580,7 +580,7 @@
         left: 0px;
         margin-top: 5px;
 
-        background-color: red;
+        background-color: rgb(255, 251, 0);
         width: 100vw;
         height: 10vh;
     }

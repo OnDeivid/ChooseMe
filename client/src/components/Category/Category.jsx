@@ -27,10 +27,12 @@ export default function Category({ row, battles, sectionsData }) {
                             </div>
                         )
                     })}
+                    <div style={{ background: 'yellow', width: '80%', height: '90px', position: 'absolute', bottom: '0px' }}></div>
+                    <div style={{ background: 'yellow', width: '80%', height: '90px', position: 'absolute', top: '0px' }}></div>
                 </div>
+
             </div>
-            <div style={{ background: 'yellow', width: '80%', height: '90px', position: 'absolute', bottom: '0px' }}></div>
-            <div style={{ background: 'yellow', width: '80%', height: '90px', position: 'absolute', top: '0px' }}></div>
+
 
         </main>
     )
