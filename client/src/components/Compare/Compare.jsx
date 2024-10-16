@@ -103,8 +103,8 @@ export default function Compare({ topic, sectionData, setUpdate }) {
                         </div>
 
                     </div>
-                    <div onClick={() => { deleteItem(); deleteAllStoredData(); }} style={{ background: 'yellow', width: '80%', height: '7vh', position: 'absolute', bottom: '50px' }}></div>
-                    <div style={{ background: 'yellow', width: '80%', height: '7vh', position: 'absolute', top: '0' }}></div>
+                    <div className='topADS' onClick={() => { deleteItem(); deleteAllStoredData(); }}></div>
+                    <div className='bottomADS' ></div>
 
                 </div>
                 {firstCompetitor?.link ? <div className='donateLeft donate'>EXSTRA VOTING</div> : null}
