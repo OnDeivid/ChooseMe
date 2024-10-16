@@ -39,6 +39,10 @@ export default function Navbar() {
                         <h1>Cars</h1>
                     </div>
 
+                    <div className='endpoint' onClick={() => onEndpoint('/cars')}>
+                        <h1>About</h1>
+                    </div>
+
                     <div className='hide' onClick={() => { setIsMenuOpen(prev => !prev) }}>
                         <h1>-X-</h1>
                     </div>
