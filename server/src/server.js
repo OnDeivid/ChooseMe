@@ -44,37 +44,40 @@ const limiterHeros = rateLimit({
 });
 
 app.get('/', (req, res) => {
-    res.send('home')
+    const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
+    try {
+        res.status(200).json(JSON.stringify(currentDate));
+
+    } catch {
+        res.status(404).json('server error');
+    }
 })
 
 app.get('/getDate', (req, res) => {
-    res.send('getDate')
+    const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
+    try {
+        res.status(200).json(JSON.stringify(currentDate));
 
-    // const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
-    // try {
-    //     res.status(200).json(JSON.stringify(currentDate));
-
-    // } catch {
-    //     res.status(404).json('server error');
-    // }
+    } catch {
+        res.status(404).json('server error');
+    }
 })
 app.get('/categorySuggestion/:name', async (req, res) => {
-    res.send('categoryName')
 
-    // const sectionName = req.params.name
-    // const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
+    const sectionName = req.params.name
+    const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
 
-    // if (!isAjaxRequest) {
-    //     res.status(200).json('something get wrong');
-    // } else {
+    if (!isAjaxRequest) {
+        res.status(200).json('something get wrong');
+    } else {
 
-    //     try {
-    //         const data = await getSectionData(sectionName)
-    //         res.status(200).json(JSON.stringify(data));
-    //     } catch (err) {
-    //         res.status(404).json('something get wrong');
-    //     }
-    // }
+        try {
+            const data = await getSectionData(sectionName)
+            res.status(200).json(JSON.stringify(data));
+        } catch (err) {
+            res.status(404).json('something get wrong');
+        }
+    }
 });
 
 app.put('/choice/lol/', limiterLol, async (req, res) => {
