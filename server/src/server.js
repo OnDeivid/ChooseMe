@@ -44,10 +44,9 @@ const limiterHeros = rateLimit({
 });
 
 app.get('/', async (req, res) => {
-    // let data = await getAllSectionData()
-    
-    // res.status(200).json(JSON.stringify(data));
-res.send('data')
+    let data = await getAllSectionData()
+
+    res.status(200).json({ data });
 })
 
 app.get('/getDate', (req, res) => {
@@ -68,13 +67,13 @@ app.get('/categorySuggestion/:name', async (req, res) => {
     //     res.status(200).json('something get wrong');
     // } else {
 
-        try {
-            const data = await getSectionData(sectionName)
-            console.log(data)
-            res.status(200).json(JSON.stringify(data));
-        } catch (err) {
-            res.status(404).json('123');
-        }
+    try {
+        const data = await getSectionData(sectionName)
+        console.log(data)
+        res.status(200).json(JSON.stringify(data));
+    } catch (err) {
+        res.status(404).json('123');
+    }
     // }
 });
 
