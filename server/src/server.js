@@ -107,7 +107,3 @@ app.put('/choice/heros/', limiterHeros, async (req, res) => {
     res.status(200).json('heros');
 
 });
-
-app.listen(3000, () => {
-    console.log('Server is running on port https://www.youtube.com/watch?v=jkNnceNJXz0');
-});
