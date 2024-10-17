@@ -54,7 +54,7 @@ app.get('/getDate', (req, res) => {
         res.status(404).json('server error');
     }
 })
-app.get('/categorySuggestion', async (req, res) => {
+app.get('/categorySuggestion/:name', async (req, res) => {
 
     const sectionName = req.params.name
     const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
