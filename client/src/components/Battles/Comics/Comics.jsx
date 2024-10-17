@@ -10,7 +10,7 @@ export default function Comics() {
     const name = 'heros'
     console.log(update)
     useEffect(() => {
-        GET(`/categorySuggestion/${name}`).then(res => setSectionData(JSON.parse(res)))
+        GET(`/categorySuggestion/${name}`).then(res => setSectionData(res))
     }, [update])
     return (
         <div>

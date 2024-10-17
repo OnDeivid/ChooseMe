@@ -36,7 +36,7 @@ export default function Compare({ topic, sectionData, setUpdate }) {
 
     }
     useEffect(() => {
-        GET('/getDate').then(res => checkDate(JSON.parse(res)))
+        GET('/getDate').then(res => checkDate(res))
     }, [])
 
     useEffect(() => {

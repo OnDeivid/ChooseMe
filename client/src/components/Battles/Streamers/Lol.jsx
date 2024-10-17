@@ -9,7 +9,7 @@ export default function Streamers() {
     const [update, setUpdate] = useState(false)
     const name = 'lol'
     useEffect(() => {
-        GET(`/categorySuggestion/${name}`).then(res => setSectionData(JSON.parse(res)))
+        GET(`/categorySuggestion/${name}`).then(res => setSectionData(res))
     }, [update])
     return (
         <Compare battles={data.streamersCompare} setUpdate={setUpdate} sectionData={sectionData} topic={name} />
