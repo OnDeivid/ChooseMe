@@ -13,7 +13,11 @@ const app = express();
 
 
 const corsOptions = {
-    origin: ['https://choose-me-deivids-projects-ec29e37b.vercel.app', 'https://choose-me-3yyy-psrbpfwjj-deivids-projects-ec29e37b.vercel.app'],
+    origin: [
+        "choose-me.vercel.app",
+        "choose-me-deivids-projects-ec29e37b.vercel.app",
+        "choose-me-git-main-deivids-projects-ec29e37b.vercel.app"
+    ],
     optionsSuccessStatus: 200,
     methods: 'GET,POST,PUT,DELETE',
     credentials: true

@@ -11,7 +11,7 @@ export default function Cars() {
     const name = 'cars'
 
     useEffect(() => {
-        GET(`/${name}`).then(res => setSectionData(JSON.parse(res)))
+        GET(`/categorySuggestion/${name}`).then(res => setSectionData(JSON.parse(res)))
     }, [update])
 
     return (
