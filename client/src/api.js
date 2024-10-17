@@ -1,4 +1,4 @@
-const baseURL = 'https://choosemeserver.vercel.app';
+const baseURL = 'https://serverchoose.vercel.app';
 
 async function requester(method, url, data = null) {
     const options = {
