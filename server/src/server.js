@@ -13,15 +13,11 @@ const app = express();
 
 
 const corsOptions = {
-    origin: [
-        "choose-me.vercel.app",
-        "choose-me-deivids-projects-ec29e37b.vercel.app",
-        "choose-me-git-main-deivids-projects-ec29e37b.vercel.app"
-    ],
+    origin: 'https://choose-me-deivids-projects-ec29e37b.vercel.app/',
     optionsSuccessStatus: 200,
-    methods: 'GET,POST,PUT,DELETE',
-    credentials: true
-};
+    credentials: false
+}
+
 app.use(helmet())
 app.use(cors(corsOptions));
 app.use(express.json())
