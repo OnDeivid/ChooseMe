@@ -10,10 +10,8 @@ const { getSectionData, increaseCount, getAllSectionData } = require('./service/
 
 const app = express();
 
-
-
 const corsOptions = {
-    origin: 'https://choose-me-deivids-projects-ec29e37b.vercel.app/',
+    origin: 'https://choose-me-deivids-projects-ec29e37b.vercel.app',
     optionsSuccessStatus: 200,
     credentials: false
 }
@@ -22,7 +20,7 @@ app.use(helmet())
 app.use(cors(corsOptions));
 app.use(express.json())
 
-// connectDB()
+connectDB()
 
 const limiterCars = rateLimit({
     windowMs: calculateTimeUntilNextDay(),//until the next day
@@ -105,3 +103,6 @@ app.put('/choice/heros/', limiterHeros, async (req, res) => {
     res.status(200).json('heros');
 
 });
+
+
+module.exports = app;
