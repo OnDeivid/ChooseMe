@@ -63,12 +63,12 @@ app.get('/categorySuggestion/:name', async (req, res) => {
     //     res.status(200).json('something get wrong');
     // } else {
 
-    try {
-        const data = await getSectionData(sectionName)
-        res.status(200).json(`nice we did it !!!${data}`);
-    } catch (err) {
-        res.status(404).json('123');
-    }
+    // try {
+    //     const data = await getSectionData(sectionName)
+    res.status(200).json(`nice we did it !!!`);
+    // } catch (err) {
+    //     res.status(404).json('123');
+    // }
     // }
 });
 
