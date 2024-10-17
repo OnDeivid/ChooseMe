@@ -57,19 +57,19 @@ app.get('/getDate', (req, res) => {
 app.get('/categorySuggestion/:name', async (req, res) => {
 
     const sectionName = req.params.name
-    const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
+    // const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
 
-    if (!isAjaxRequest) {
-        res.status(200).json('something get wrong');
-    } else {
+    // if (!isAjaxRequest) {
+    //     res.status(200).json('something get wrong');
+    // } else {
 
-        try {
-            const data = await getSectionData(sectionName)
-            res.status(200).json('categorySuggestion');
-        } catch (err) {
-            res.status(404).json('123');
-        }
+    try {
+        const data = await getSectionData(sectionName)
+        res.status(200).json(`nice we did it !!!${data}`);
+    } catch (err) {
+        res.status(404).json('123');
     }
+    // }
 });
 
 app.put('/choice/lol/', limiterLol, async (req, res) => {
