@@ -44,7 +44,7 @@ const limiterHeros = rateLimit({
 app.get('/', async (req, res) => {
     let data = await getAllSectionData()
 
-    res.status(200).json({ data });
+    res.status(200).json('home');
 })
 
 app.get('/getDate', (req, res) => {
@@ -56,29 +56,29 @@ app.get('/getDate', (req, res) => {
         res.status(404).json('server error');
     }
 })
-app.get('/categorySuggestion/:name', async (req, res) => {
+app.get('/categorySuggestion', async (req, res) => {
 
-    const sectionName = req.params.name
-    const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
+    // const sectionName = req.params.name
+    // const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
 
-    if (!isAjaxRequest) {
-        res.status(200).json('something get wrong');
-    } else {
+    // if (!isAjaxRequest) {
+    //     res.status(200).json('something get wrong');
+    // } else {
 
-        try {
-            const data = await getSectionData(sectionName)
-            res.status(200).json(data);
-        } catch (err) {
-            res.status(404).json('123');
-        }
-    }
+    //     try {
+            // const data = await getSectionData(sectionName)
+            res.status(200).json('categorySuggestion');
+    //     } catch (err) {
+    //         res.status(404).json('123');
+    //     }
+    // }
 });
 
 app.put('/choice/lol/', limiterLol, async (req, res) => {
-    console.log(calculateTimeUntilNextDay())
+    // console.log(calculateTimeUntilNextDay())
 
-    const { name } = req.body
-    await increaseCount('lol', name)
+    // const { name } = req.body
+    // await increaseCount('lol', name)
 
     res.status(200).json('lol');
 
