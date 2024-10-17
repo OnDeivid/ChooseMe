@@ -22,7 +22,7 @@ app.use(helmet())
 app.use(cors(corsOptions));
 app.use(express.json())
 
-connectDB()
+// connectDB()
 
 const limiterCars = rateLimit({
     windowMs: calculateTimeUntilNextDay(),//until the next day
