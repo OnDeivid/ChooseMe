@@ -65,8 +65,9 @@ app.get('/categorySuggestion/:name', async (req, res) => {
 
         try {
             const data = await getSectionData(sectionName)
-            
+
             res.status(200).json(data);
+            
         } catch (err) {
             res.status(404).json('123');
         }
