@@ -28,38 +28,18 @@ const limiterCars = rateLimit({
     max: 1, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false,
-    handler: (req, res) => {
-        res.status(429).json({
-            error: "Too many requests, please try again later."
-        });
-        throw new Error('Too many requests, please try again later.')
-    }
 });
 const limiterLol = rateLimit({
     windowMs: calculateTimeUntilNextDay(),//until the next day
     max: 1, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-    handler: (req, res) => {
-        res.status(429).json({
-            error: "Too many requests, please try again later."
-        });
-        throw new Error('Too many requests, please try again later.')
-
-    }
 });
 const limiterHeros = rateLimit({
     windowMs: calculateTimeUntilNextDay(),//until the next day
     max: 1, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-    handler: (req, res) => {
-        res.status(429).json({
-            error: "Too many requests, please try again later."
-        });
-        throw new Error('Too many requests, please try again later.')
-
-    }
 });
 
 app.get('/', async (req, res) => {
@@ -72,7 +52,7 @@ app.get('/getDate', (req, res) => {
     const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
     try {
         res.status(200).json(currentDate);
-        
+
 
     } catch {
         res.status(404).json('server error');
