@@ -3,10 +3,13 @@ const moment = require('moment-timezone');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const helmet = require('helmet')
+
 const rateLimit = require('express-rate-limit');
+
 const calculateTimeUntilNextDay = require('./utils/nextDayTimer');
 
 const { getSectionData, increaseCount, getAllSectionData } = require('./service/competitor');
+const delayMiddleware = require('./middleware/delayMiddleware');
 
 const app = express();
 
@@ -67,14 +70,14 @@ app.get('/categorySuggestion/:name', async (req, res) => {
             const data = await getSectionData(sectionName)
 
             res.status(200).json(data);
-            
+
         } catch (err) {
             res.status(404).json('123');
         }
     }
 });
 
-app.put('/choice/lol/', limiterLol, async (req, res) => {
+app.put('/choice/lol/', delayMiddleware, limiterLol, async (req, res) => {
     console.log(calculateTimeUntilNextDay())
 
     const { name } = req.body
@@ -84,7 +87,7 @@ app.put('/choice/lol/', limiterLol, async (req, res) => {
 
 });
 
-app.put('/choice/cars/', limiterCars, async (req, res) => {
+app.put('/choice/cars/', delayMiddleware, limiterCars, async (req, res) => {
     console.log(calculateTimeUntilNextDay())
 
     const { name } = req.body
@@ -94,7 +97,7 @@ app.put('/choice/cars/', limiterCars, async (req, res) => {
 
 });
 
-app.put('/choice/heros/', limiterHeros, async (req, res) => {
+app.put('/choice/heros/', delayMiddleware, limiterHeros, async (req, res) => {
     console.log(calculateTimeUntilNextDay())
 
     const { name } = req.body
