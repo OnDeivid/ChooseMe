@@ -95,30 +95,45 @@ app.get('/categorySuggestion/:name', async (req, res) => {
 app.put('/choice/lol/', limiterLol, delayMiddleware, async (req, res) => {
     console.log(calculateTimeUntilNextDay())
 
-    const { name } = req.body
-    await increaseCount('lol', name)
+    try {
+        const { name } = req.body
+        await increaseCount('lol', name)
 
-    res.status(200).json('lol');
+        res.status(200).json('lol');
+    } catch (err) {
+        res.status(400).json('server error');
+
+    }
 
 });
 
 app.put('/choice/cars/', limiterCars, delayMiddleware, async (req, res) => {
     console.log(calculateTimeUntilNextDay())
 
-    const { name } = req.body
-    await increaseCount('cars', name)
+    try {
+        const { name } = req.body
+        await increaseCount('cars', name)
 
-    res.status(200).json('cars');
+        res.status(200).json('cars');
+    } catch (err) {
+        res.status(400).json('server error');
+
+    }
 
 });
 
 app.put('/choice/heros/', limiterHeros, delayMiddleware, async (req, res) => {
     console.log(calculateTimeUntilNextDay())
 
-    const { name } = req.body
-    await increaseCount('heros', name)
+    try {
+        const { name } = req.body
+        await increaseCount('heros', name)
 
-    res.status(200).json('heros');
+        res.status(200).json('heros');
+    } catch (err) {
+        res.status(400).json('server error');
+
+    }
 
 });
 
