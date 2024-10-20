@@ -9,12 +9,11 @@ const rateLimit = require('express-rate-limit');
 const calculateTimeUntilNextDay = require('./utils/nextDayTimer');
 
 const { getSectionData, increaseCount, getAllSectionData } = require('./service/competitor');
-const delayMiddleware = require('./middleware/delayMiddleware');
 
 const app = express();
 
 const corsOptions = {
-    origin: 'https://choose-me-deivids-projects-ec29e37b.vercel.app',
+    origin: ['https://choose-me-deivids-projects-ec29e37b.vercel.app','http://localhost:5173'],
 }
 
 app.use(helmet())
