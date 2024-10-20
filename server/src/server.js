@@ -72,6 +72,7 @@ app.get('/getDate', (req, res) => {
     const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
     try {
         res.status(200).json(currentDate);
+        
 
     } catch {
         res.status(404).json('server error');
