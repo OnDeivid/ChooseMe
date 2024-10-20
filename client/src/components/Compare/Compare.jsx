@@ -22,10 +22,10 @@ export default function Compare({ topic, sectionData, setUpdate }) {
     const { storedValue, setItem, deleteItem, deleteAllStoredData, checkDate } = useLocalStorage(topic, false);
 
     async function onChoose(section, name) {
-        if (buttonRestriction == true) {
-            return
-        }
         try {
+            if (buttonRestriction == true) {
+                throw new Error('we get Error')
+            }
             if (!name) {
                 return
             }
