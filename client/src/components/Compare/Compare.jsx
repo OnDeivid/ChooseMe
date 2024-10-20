@@ -21,23 +21,19 @@ export default function Compare({ topic, sectionData, setUpdate }) {
 
     const { storedValue, setItem, deleteItem, deleteAllStoredData, checkDate } = useLocalStorage(topic, false);
 
-    async function onChoose(section, name) {
+    async function onChoose(name) {
         try {
-            if (buttonRestriction == true) {
-                throw new Error('we get Error')
-            }
-            if (!name) {
-                return
-            }
-            const data = await PUT(`/choice/${section}`, { name })
-            if (data.error) {
-                throw new Error('to many requests!')
-            }
+            if (!name){
+                throw new Error('Error')
+            };
+
+            const data = await PUT(`/choice/${topic}`, { name });
+            if (data.error) throw new Error('Too many requests!');
+
             setUpdate(prev => !prev);
         } catch (err) {
-            console.log(err)
+            console.log(err.message);
         }
-
     }
     useEffect(() => {
         GET('/getDate').then(res => checkDate(res))
