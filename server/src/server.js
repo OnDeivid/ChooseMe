@@ -122,7 +122,7 @@ app.put('/choice/cars/', limiterCars, delayMiddleware, async (req, res) => {
 
 });
 
-app.put('/choice/heros/', limiterHeros, delayMiddleware, async (req, res) => {
+app.put('/choice/heros/', limiterHeros, async (req, res) => {
     console.log(calculateTimeUntilNextDay())
 
     try {

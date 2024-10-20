@@ -16,11 +16,15 @@ export default function Compare({ topic, sectionData, setUpdate }) {
     const [selectedChoice, setSelectedChoice] = useState('');
     const [firstCompetitor, setFirstCompetitor] = useState([])
     const [secondCompetitor, setSecondCompetitor] = useState([])
+    const [buttonRestriction, setButtonRestriction] = useState(false)
 
 
     const { storedValue, setItem, deleteItem, deleteAllStoredData, checkDate } = useLocalStorage(topic, false);
 
     async function onChoose(section, name) {
+        if (buttonRestriction == true) {
+            return
+        }
         try {
             if (!name) {
                 return
@@ -58,7 +62,7 @@ export default function Compare({ topic, sectionData, setUpdate }) {
 
                         {/* First Battle----------------------------------------------------------------------------------*/}
                         <div key={firstCompetitor?.name}
-                            onClick={() => { setItem('batman'); setSelectedChoice(1); onChoose(topic, firstCompetitor.name) }}
+                            onClick={() => { setItem('batman'); setButtonRestriction(true); setSelectedChoice(1); onChoose(topic, firstCompetitor.name) }}
                             className='compare-item'>
 
                             {firstCompetitor?.link ?
@@ -84,7 +88,7 @@ export default function Compare({ topic, sectionData, setUpdate }) {
 
                         {/* Second Battle----------------------------------------------------------------------------------------*/}
                         <div key={secondCompetitor?.name}
-                            onClick={() => { setItem('spider-man'); setSelectedChoice(2); onChoose(topic, secondCompetitor.name) }}
+                            onClick={() => { setItem('spider-man'); setSelectedChoice(2); setButtonRestriction(true); onChoose(topic, secondCompetitor.name) }}
                             className='compare-item'>
 
                             {secondCompetitor?.link ?

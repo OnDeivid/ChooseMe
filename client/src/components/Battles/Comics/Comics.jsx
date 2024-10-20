@@ -8,7 +8,7 @@ export default function Comics() {
     const [update, setUpdate] = useState(false)
 
     const name = 'heros'
-    console.log(update)
+    
     useEffect(() => {
         GET(`/categorySuggestion/${name}`).then(res => setSectionData(res))
     }, [update])
