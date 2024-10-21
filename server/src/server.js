@@ -13,7 +13,7 @@ const { getSectionData, increaseCount, getAllSectionData } = require('./service/
 const app = express();
 
 const corsOptions = {
-    origin: ['https://choose-me-deivids-projects-ec29e37b.vercel.app','http://localhost:5173'],
+    origin: ['https://choose-me-deivids-projects-ec29e37b.vercel.app', 'http://localhost:5173', 'http://192.168.0.4:5173'],
 }
 
 app.use(helmet())
@@ -23,10 +23,10 @@ app.use(express.json())
 connectDB()
 
 const limiterCars = rateLimit({
-    windowMs: calculateTimeUntilNextDay(),//until the next day
-    max: 1, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-    legacyHeaders: false,
+    windowMs: calculateTimeUntilNextDay(), // Time window until the next day
+    max: 1, // Limit to 1 request per window
+    standardHeaders: true, // Adds `RateLimit-*` headers to the response
+    legacyHeaders: false, // Disable `X-RateLimit-*` headers
 });
 const limiterLol = rateLimit({
     windowMs: calculateTimeUntilNextDay(),//until the next day
@@ -40,7 +40,7 @@ const limiterHeros = rateLimit({
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
- 
+
 
 app.get('/', async (req, res) => {
     await getAllSectionData()
