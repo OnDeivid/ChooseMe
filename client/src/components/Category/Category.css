@@ -1,29 +1,28 @@
 /* Main container styles */
 .main-container {
     background-color: var(--darkOrange);
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: inset 0px 10px 150px rgba(0, 0, 0, 0.7);
 }
 
-.topADS{
+.topADS {
     position: fixed;
     top: 10px;
     left: 0px;
 
-    background-color: rgb(255, 251, 0);
     width: 100vw;
     height: 10vh;
 }
+
 .bottomADS-category {
     position: fixed;
     left: 0px;
     bottom: 8vh;
 
-    background-color: rgb(255, 251, 0);
     width: 100vw;
     height: 10vh;
 }
@@ -31,17 +30,19 @@
 /* Container for catalog items */
 .content-container {
 
-    background-color: var(--darkWhite);
+    background-color:#d1d0d0;
     border-radius: 10px;
+    height: 55dvh;
     width: 100%;
+    margin: auto;
+    align-content: center;
 
-    padding: 30px;
+
 }
 
 /* Catalog section styles */
 .catalog-section {
     border-radius: 10px;
-    height: 100%;
     padding: 20px;
     display: flex;
 }
@@ -49,6 +50,7 @@
 /* Individual catalog item styles */
 .catalog-item {
 
+    background-color: #555;
     width: 35%;
     height: 210px;
     margin: 3px;
@@ -64,12 +66,14 @@
 }
 
 .logo-container {
-    opacity: 0.39;
-    transition: opacity 0.6s;
-    position: relative;
     width: 100%;
-
     height: 100%;
+
+    position: relative;
+
+    opacity: 0.39;
+
+    transition: opacity 0.6s;
 }
 
 .logo-container:hover {
@@ -78,7 +82,6 @@
 }
 
 .logo-image {
-
     height: 100%;
     width: 100%;
     object-fit: contain;
@@ -120,46 +123,50 @@
 }
 
 
+
 /* Responsive adjustments */
 @media only screen and (max-width: 1024px) {
+    .main-container {
+        background-color: #071B2F;
+
+    }
+
     .content-container {
         background-color: #071B2F;
-        height: 100vh;
-        overflow-y: scroll;
-        overflow-x: hidden;
+        height: 95dvh;
+        position: relative;
+        overflow: hidden;
+
     }
 
     .catalog-section {
+
         flex-direction: column;
-        height: 70vh;
-        margin: 80px;
-        width: 100%;
-        margin-left: -20px;
-        overflow-x: hidden;
-    }
-
-    .catalog-item:hover {
-        margin-top: 10px;
-
+        height: 90%;
+        width: 90%;
+        margin: auto;
+        overflow: hidden;
     }
 
     .catalog-item {
         width: 100%;
-        margin: 10px;
         height: 20vh;
         min-height: 10vh;
+        margin-top: 0px;
+
         margin-left: 0px;
+
         border: 2px solid var(--darkWhite);
         border-radius: 10px;
+
         box-shadow: 0px 14px 11px -4px rgba(0, 0, 0, 0.75);
-        transition: 0.5s;
+
     }
 
     .twitch-item:hover,
     .comics-item:hover,
     .third-item:hover {
-        margin-top: 10px;
-        transition: margin-top 0.6s, box-shadow 0.6s;
+        transition:  box-shadow 0.6s;
         box-shadow: 0px 29px 26px -9px rgba(0, 0, 0, 0.75);
     }
 

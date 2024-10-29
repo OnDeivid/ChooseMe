@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import './Navbar.css'
 
@@ -11,40 +11,41 @@ export default function Navbar() {
     function onEndpoint(endpint) {
         navigate(endpint)
     }
+
     return (
         <>
             {!isMenuOpen ?
                 <div className='hiddenMenu' onClick={() => setIsMenuOpen((prev) => !prev)}>
-                    <h1>Menu</h1>
+                    <li>Menu</li>
                 </div>
                 :
                 <div className='navbar'>
-                    <div className='endpoint' style={{ borderBottomLeftRadius: 10 }} onClick={() => onEndpoint('/')}>
-                        <h1>Home</h1>
+                    <div className={`endpoint`} style={{ borderBottomLeftRadius: 10 }} onClick={() => onEndpoint('/')}>
+                        <li>Home</li>
                     </div>
 
-                    <div className='endpoint' onClick={() => onEndpoint('/comics')}>
-                        <h1>Comics</h1>
+                    <div className={`endpoint`} onClick={() => onEndpoint('/comics')}>
+                        <li>Comics</li>
                     </div>
 
-                    <div className='endpoint' onClick={() => onEndpoint('/lol')}>
-                        <h1>league of legends</h1>
+                    <div className={`endpoint`} onClick={() => onEndpoint('/lol')}>
+                        <li>LoL</li>
                     </div>
 
-                    <div className='endpoint' onClick={() => onEndpoint('/csgo')}>
-                        <h1>CS:GO</h1>
+                    <div className={`endpoint`} onClick={() => onEndpoint('/csgo')}>
+                        <li>CS:GO</li>
                     </div>
 
-                    <div className='endpoint' onClick={() => onEndpoint('/cars')}>
-                        <h1>Cars</h1>
+                    <div className={`endpoint`} onClick={() => onEndpoint('/cars')}>
+                        <li>Cars</li>
                     </div>
 
-                    <div className='endpoint' onClick={() => onEndpoint('/cars')}>
-                        <h1>About</h1>
+                    <div className={`endpoint`} onClick={() => onEndpoint('/cars')}>
+                        <li>About</li>
                     </div>
 
                     <div className='hide' onClick={() => { setIsMenuOpen(prev => !prev) }}>
-                        <h1>-X-</h1>
+                        <li>X</li>
                     </div>
                 </div>}
         </>

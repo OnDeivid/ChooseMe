@@ -62,10 +62,13 @@ export default function Compare({ topic, sectionData, setUpdate }) {
                             onClick={() => { setItem('batman'); setButtonRestriction(true); setSelectedChoice(1); onChoose(topic, firstCompetitor.name) }}
                             className='compare-item'>
 
-                            {firstCompetitor?.link ?
-                                <h3 className='name' src={firstCompetitor?.link}>Twith: <a href={firstCompetitor?.link}>{firstCompetitor?.name}</a></h3>
-                                :
-                                <h3 className='name'>{firstCompetitor?.name}</h3>}
+
+                            <div className='nameHolder' onClick={(e) => e.stopPropagation()}>
+                                {secondCompetitor?.link ?
+                                    <h3 className='name' >Twith: <a href={secondCompetitor?.link}>{secondCompetitor?.name}</a></h3>
+                                    :
+                                    <h3 className='name'>{secondCompetitor?.name}</h3>}
+                            </div>
 
                             {hasVoted && <h1 className='voted'>VOTED</h1>}
                             {hasVoted && <h1 className='votes-count'>{firstCompetitor?.votes ? voteFormatting(firstCompetitor?.votes) : null}</h1>}
@@ -75,6 +78,8 @@ export default function Compare({ topic, sectionData, setUpdate }) {
                                 alt={`${firstCompetitor?.name} comparison`} />
 
 
+
+                            {firstCompetitor?.link ? <div className='donateLeft donate' onClick={(e) => e.stopPropagation()}>EXSTRA VOTING</div> : null}
                         </div>
 
                         {/* Info------------------------------------------------------------------------------------------------*/}
@@ -88,10 +93,12 @@ export default function Compare({ topic, sectionData, setUpdate }) {
                             onClick={() => { setItem('spider-man'); setSelectedChoice(2); setButtonRestriction(true); onChoose(topic, secondCompetitor.name) }}
                             className='compare-item'>
 
-                            {secondCompetitor?.link ?
-                                <h3 className='name' >Twith: <a href={secondCompetitor?.link}>{secondCompetitor?.name}</a></h3>
-                                :
-                                <h3 className='name'>{secondCompetitor?.name}</h3>}
+                            <div className='nameHolder' onClick={(e) => e.stopPropagation()} >
+                                {secondCompetitor?.link ?
+                                    <h3 className='name' >Twith: <a href={secondCompetitor?.link}>{secondCompetitor?.name}</a></h3>
+                                    :
+                                    <h3 className='name'>{secondCompetitor?.name}</h3>}
+                            </div>
 
                             {hasVoted && <h1 className='voted'>VOTED</h1>}
                             {hasVoted && <h1 className='votes-count'>{secondCompetitor?.votes ? voteFormatting(secondCompetitor?.votes) : null}</h1>}
@@ -101,15 +108,16 @@ export default function Compare({ topic, sectionData, setUpdate }) {
                                 alt={`${secondCompetitor?.name} comparison`} />
 
 
+
+                            {secondCompetitor?.link ? <div className='donateRight donate' onClick={(e) => e.stopPropagation()}>EXSTRA VOTING</div> : null}
                         </div>
 
+                        <div className='topADS' onClick={() => { deleteItem(); deleteAllStoredData(); }}></div>
+                        <div className='bottomADS' ></div>
                     </div>
-                    <div className='topADS' onClick={() => { deleteItem(); deleteAllStoredData(); }}></div>
-                    <div className='bottomADS' ></div>
 
                 </div>
-                {firstCompetitor?.link ? <div className='donateLeft donate'>EXSTRA VOTING</div> : null}
-                {secondCompetitor?.link ? <div className='donateRight donate'>EXSTRA VOTING</div> : null}
+
             </main>
         </div>
     );
