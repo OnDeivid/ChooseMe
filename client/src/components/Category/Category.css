@@ -16,21 +16,25 @@
 
     width: 100vw;
     height: 10vh;
+    display: none;
+
 }
 
 .bottomADS-category {
+
     position: fixed;
     left: 0px;
     bottom: 8vh;
 
     width: 100vw;
     height: 10vh;
+    display: none;
 }
 
 /* Container for catalog items */
 .content-container {
 
-    background-color:#d1d0d0;
+    background-color: #d1d0d0;
     border-radius: 10px;
     height: 55dvh;
     width: 100%;
@@ -127,8 +131,8 @@
 /* Responsive adjustments */
 @media only screen and (max-width: 1024px) {
     .main-container {
-        background-color: #071B2F;
-
+        background-color: #9ea9b5;
+        margin-top: -10dvh;
     }
 
     .content-container {
@@ -140,11 +144,10 @@
     }
 
     .catalog-section {
-
+        background-color: red;
         flex-direction: column;
-        height: 90%;
-        width: 90%;
-        margin: auto;
+        height: 95%;
+        margin-top: -2.5dvh;
         overflow: hidden;
     }
 
@@ -166,7 +169,7 @@
     .twitch-item:hover,
     .comics-item:hover,
     .third-item:hover {
-        transition:  box-shadow 0.6s;
+        transition: box-shadow 0.6s;
         box-shadow: 0px 29px 26px -9px rgba(0, 0, 0, 0.75);
     }
 
