@@ -13,7 +13,7 @@ const { getSectionData, increaseCount, getAllSectionData } = require('./service/
 const app = express();
 
 const corsOptions = {
-    origin: ['https://choose-me-deivids-projects-ec29e37b.vercel.app', 'http://localhost:5173', 'http://192.168.0.3:5173', '*'],
+    origin: ['https://choose-me-deivids-projects-ec29e37b.vercel.app', 'http://localhost:5173', 'http://192.168.0.3:5173', 'http://192.168.0.4:5173', '*'],
 }
 
 app.use(helmet())
