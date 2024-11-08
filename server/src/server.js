@@ -68,7 +68,6 @@ app.get('/getDate', (req, res) => {
     try {
         res.status(200).json(currentDate);
 
-
     } catch {
         res.status(404).json('server error');
     }
@@ -101,7 +100,6 @@ app.get('/categorySuggestion/:name', async (req, res) => {
 
 app.put('/choice/lol/', limiterLol, async (req, res) => {
     console.log(calculateTimeUntilNextDay())
-
     try {
         const { name } = req.body
         await increaseCount('lol', name)
