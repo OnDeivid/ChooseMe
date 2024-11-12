@@ -1,6 +1,8 @@
 /* Main container styles */
 .main-container {
-    background-color: var(--darkOrange);
+    /* background-color: var(--darkOrange); */
+    background-color: #013584;
+
     height: 100dvh;
     width: 100dvw;
     display: flex;
@@ -75,9 +77,9 @@
 
     position: relative;
 
-    opacity: 0.39;
+    opacity: 0.7;
 
-    transition: opacity 0.6s;
+    transition: opacity 1s;
 }
 
 .logo-container:hover {
@@ -136,18 +138,19 @@
     }
 
     .content-container {
-        background-color: #071B2F;
-        height: 95dvh;
+        background-color: #cbcbcb;
+        height: 100dvh;
         position: relative;
+        margin-top: 0dvh;
+        border-radius: 0px;
         overflow: hidden;
 
     }
 
     .catalog-section {
-        background-color: red;
         flex-direction: column;
         height: 95%;
-        margin-top: -2.5dvh;
+        margin-top: 3dvh;
         overflow: hidden;
     }
 
@@ -157,7 +160,7 @@
         min-height: 10vh;
         margin-top: 0px;
 
-        margin-left: 0px;
+        margin-left: -0.3dvh;
 
         border: 2px solid var(--darkWhite);
         border-radius: 10px;
@@ -204,20 +207,20 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #0c8349;
     /* Background color of the track */
     border-radius: 10px;
     /* Rounded corners for the track */
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #850a0a;
     /* Color of the scrollbar thumb */
     border-radius: 10px;
     /* Rounded corners for the thumb */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #7d0404;
     /* Color of the thumb when hovered */
 }
