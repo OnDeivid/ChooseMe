@@ -36,7 +36,7 @@ const rateLimit_lol = (maxRequests, windowSize) => {
             redis: Redis.fromEnv(),
             limiter: Ratelimit.slidingWindow(maxRequests, windowSize + 'ms'),
             analytics: true,
-            prefix: "Picasso",
+            prefix: "Picasso1",
         });
 
         const identifier = clientIp;
@@ -62,7 +62,7 @@ const rateLimit_cars = (maxRequests, windowSize) => {
             redis: Redis.fromEnv(),
             limiter: Ratelimit.slidingWindow(maxRequests, windowSize + 'ms'),
             analytics: true,
-            prefix: "Picasso",
+            prefix: "Picasso2",
         });
 
         const identifier = clientIp;
@@ -88,7 +88,7 @@ const rateLimit_heros = (maxRequests, windowSize) => {
             redis: Redis.fromEnv(),
             limiter: Ratelimit.slidingWindow(maxRequests, windowSize + 'ms'),
             analytics: true,
-            prefix: "Picasso",
+            prefix: "Picasso3",
         });
 
         const identifier = clientIp;
