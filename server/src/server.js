@@ -28,26 +28,26 @@ connectDB()
 
 
 // const limiterCars = rateLimit({
-//     windowMs: 8000, 
+//     windowMs: 240000, 
 //     max: 1, 
 //     standardHeaders: true,
 //     legacyHeaders: false, 
 
 // });
 // const limiterLol = rateLimit({
-//     windowMs: 8000,
+//     windowMs: 240000,
 //     max: 1, 
 //     standardHeaders: true, 
 //     legacyHeaders: false, 
 // });
 // const limiterHeros = rateLimit({
-//     windowMs: 8000,
+//     windowMs: 240000,
 //     max: 1, 
 //     standardHeaders: true, 
 //     legacyHeaders: false, 
 // });
 // const getDate = rateLimit({
-//     windowMs: 8000,
+//     windowMs: 240000,
 //     max: 1, 
 //     standardHeaders: true, 
 //     legacyHeaders: false, 
@@ -77,7 +77,7 @@ app.get('/', async (req, res) => {
 
 })
 
-app.get('/getDate', rateLimitMiddleware(1, 8000), (req, res) => {
+app.get('/getDate', rateLimitMiddleware(1, 240000), (req, res) => {
     const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
     try {
         res.status(200).json(currentDate);
@@ -110,8 +110,8 @@ app.get('/categorySuggestion/:name', async (req, res) => {
 
 //put request
 
-app.put('/choice/lol/', rateLimitMiddleware(1, 8000), async (req, res) => {
-    console.log(8000)
+app.put('/choice/lol/', rateLimitMiddleware(1, 240000), async (req, res) => {
+    console.log(240000)
     try {
         const { name } = req.body
         await increaseCount('lol', name)
@@ -122,8 +122,8 @@ app.put('/choice/lol/', rateLimitMiddleware(1, 8000), async (req, res) => {
     }
 });
 
-app.put('/choice/cars/', rateLimitMiddleware(1, 8000), async (req, res) => {
-    console.log(8000)
+app.put('/choice/cars/', rateLimitMiddleware(1, 240000), async (req, res) => {
+    console.log(240000)
 
     try {
         const { name } = req.body
@@ -137,8 +137,8 @@ app.put('/choice/cars/', rateLimitMiddleware(1, 8000), async (req, res) => {
 
 });
 
-app.put('/choice/heros/', rateLimitMiddleware(1, 8000), async (req, res) => {
-    console.log(8000)
+app.put('/choice/heros/', rateLimitMiddleware(1, 240000), async (req, res) => {
+    console.log(240000)
 
     try {
         const { name } = req.body
