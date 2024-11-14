@@ -10,14 +10,19 @@ const rateLimitMiddleware = (maxRequests, windowSize) => {
             redis: Redis.fromEnv(),
             limiter: Ratelimit.slidingWindow(maxRequests, windowSize + 'ms'),
             analytics: true,
-            prefix: "@upstash/ratelimit",
+            prefix: "Picasso",
         });
 
         const identifier = clientIp;
-        const { success } = await ratelimit.limit(identifier);
-
-        if (!success) {
-            return res.status(429).send("Rate limit exceeded. Please try again later." + windowSize);
+        try {
+            const { success } = await ratelimit.limit(identifier);
+            if (!success) {
+                return res.status(429).send("Rate limit exceeded. Please try again later." + windowSize);
+            }
+            next();
+        } catch (error) {
+            console.error("Error in rate limit middleware:", error);
+            res.status(500).send("Internal Server Error");
         }
 
         next();
