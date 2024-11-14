@@ -1,4 +1,5 @@
 const baseURL = 'https://serverchoose.vercel.app';
+// const baseURL = 'http://localhost:3000'
 
 async function requester(method, url, data = null) {
     const options = {
