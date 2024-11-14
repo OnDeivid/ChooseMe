@@ -5,7 +5,7 @@ const { Redis } = require('@upstash/redis');
 
 const rateLimitMiddleware = (maxRequests, windowSize) => {
     return async (req, res, next) => {
-
+        const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
         const ratelimit = new Ratelimit({
             redis: Redis.fromEnv(),
             limiter: Ratelimit.slidingWindow(maxRequests, windowSize + 'ms'),
@@ -13,7 +13,7 @@ const rateLimitMiddleware = (maxRequests, windowSize) => {
             prefix: "@upstash/ratelimit",
         });
 
-        const identifier = req.ip;
+        const identifier = clientIp;
         const { success } = await ratelimit.limit(identifier);
 
         if (!success) {
