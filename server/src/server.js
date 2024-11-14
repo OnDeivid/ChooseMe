@@ -158,5 +158,4 @@ app.put('/donation/lol/', async (req, res) => {
 
 });
 
-app.listen(3000, () => console.log('server listening'))
 module.exports = app;
