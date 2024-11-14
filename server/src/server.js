@@ -1,15 +1,17 @@
+require('dotenv').config()
 const express = require('express');
 const moment = require('moment-timezone');
 const cors = require('cors');
 const connectDB = require('./config/db');
-const helmet = require('helmet')
-
-const rateLimit = require('express-rate-limit');
 
 const calculateTimeUntilNextDay = require('./utils/nextDayTimer');
+// const rateLimit = require('express-rate-limit');
+
+const { rateLimitMiddleware } = require('./middleware/rateLimitMiddleware');
 
 const { getSectionData, increaseCount, getAllSectionData } = require('./service/competitor');
 
+const helmet = require('helmet');
 const app = express();
 
 const corsOptions = {
@@ -19,32 +21,44 @@ const corsOptions = {
 app.use(helmet())
 app.use(cors(corsOptions));
 app.use(express.json())
+app.disable('x-powered-by')
 
 connectDB()
-
-const limiterCars = rateLimit({
-    windowMs: calculateTimeUntilNextDay(), // Time window until the next day
-    max: 1, // Limit to 1 request per window
-    standardHeaders: true, // Adds `RateLimit-*` headers to the response
-    legacyHeaders: false, // Disable `X-RateLimit-*` headers
-});
-const limiterLol = rateLimit({
-    windowMs: calculateTimeUntilNextDay(),//until the next day
-    max: 1, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-});
-const limiterHeros = rateLimit({
-    windowMs: calculateTimeUntilNextDay(),//until the next day
-    max: 1, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-});
+//TODO write rateLimiter for getting all the data 
 
 
+// const limiterCars = rateLimit({
+//     windowMs: calculateTimeUntilNextDay(), 
+//     max: 1, 
+//     standardHeaders: true,
+//     legacyHeaders: false, 
+
+// });
+// const limiterLol = rateLimit({
+//     windowMs: calculateTimeUntilNextDay(),
+//     max: 1, 
+//     standardHeaders: true, 
+//     legacyHeaders: false, 
+// });
+// const limiterHeros = rateLimit({
+//     windowMs: calculateTimeUntilNextDay(),
+//     max: 1, 
+//     standardHeaders: true, 
+//     legacyHeaders: false, 
+// });
+// const getDate = rateLimit({
+//     windowMs: calculateTimeUntilNextDay(),
+//     max: 1, 
+//     standardHeaders: true, 
+//     legacyHeaders: false, 
+// });
+
+
+
+
+//get request
 app.get('/', async (req, res) => {
 
-    const sectionName = req.params.name
     const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
 
     if (!isAjaxRequest) {
@@ -57,19 +71,19 @@ app.get('/', async (req, res) => {
             res.status(200).json(data);
 
         } catch (err) {
-            res.status(404).json('123');
+            res.status(500).json('Internal Server Error.');
         }
     }
 
 })
 
-app.get('/getDate', (req, res) => {
+app.get('/getDate', rateLimitMiddleware(1, calculateTimeUntilNextDay()), (req, res) => {
     const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
     try {
         res.status(200).json(currentDate);
 
     } catch {
-        res.status(404).json('server error');
+        res.status(500).json('Internal Server Error.');
     }
 })
 
@@ -88,59 +102,61 @@ app.get('/categorySuggestion/:name', async (req, res) => {
             res.status(200).json(data);
 
         } catch (err) {
-            res.status(404).json('123');
+            res.status(500).json('Internal Server Error.');
         }
     }
 });
 
 
+//put request
 
-
-
-
-app.put('/choice/lol/', limiterLol, async (req, res) => {
+app.put('/choice/lol/', rateLimitMiddleware(1, calculateTimeUntilNextDay()), async (req, res) => {
     console.log(calculateTimeUntilNextDay())
     try {
         const { name } = req.body
         await increaseCount('lol', name)
 
-        res.status(200).json('lol');
+        res.status(200).json('You have successfully voted.');
     } catch (err) {
-        res.status(400).json('server error');
-
+        res.status(500).json('Internal Server Error.');
     }
-
 });
 
-app.put('/choice/cars/', limiterCars, async (req, res) => {
+app.put('/choice/cars/', rateLimitMiddleware(1, calculateTimeUntilNextDay()), async (req, res) => {
     console.log(calculateTimeUntilNextDay())
 
     try {
         const { name } = req.body
         await increaseCount('cars', name)
 
-        res.status(200).json('cars');
+        res.status(200).json('You have successfully voted.');
     } catch (err) {
-        res.status(400).json('server error');
+        res.status(500).json('Internal Server Error.');
 
     }
 
 });
 
-app.put('/choice/heros/', limiterHeros, async (req, res) => {
+app.put('/choice/heros/', rateLimitMiddleware(1, calculateTimeUntilNextDay()), async (req, res) => {
     console.log(calculateTimeUntilNextDay())
 
     try {
         const { name } = req.body
         await increaseCount('heros', name)
 
-        res.status(200).json('heros');
+        res.status(200).json('You have successfully voted.');
     } catch (err) {
-        res.status(400).json('server error');
+        res.status(500).json('Internal Server Error.');
 
     }
-
 });
 
 
+
+
+app.put('/donation/lol/', async (req, res) => {
+
+});
+
+app.listen(3000, () => console.log('server listening'))
 module.exports = app;

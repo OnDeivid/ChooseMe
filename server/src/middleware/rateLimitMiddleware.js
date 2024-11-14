@@ -1,13 +1,30 @@
-const express = require('express');
-const rateLimit = require('express-rate-limit');
+require('dotenv').config()
+const { Ratelimit } = require('@upstash/ratelimit')
+const moment = require('moment-timezone');
+const { Redis } = require('@upstash/redis');
 
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 1, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-});
+const rateLimitMiddleware = (maxRequests, windowSize) => {
+    return async (req, res, next) => {
+
+        const ratelimit = new Ratelimit({
+            redis: Redis.fromEnv(),
+            limiter: Ratelimit.slidingWindow(maxRequests, windowSize + 'ms'),
+            analytics: true,
+            prefix: "@upstash/ratelimit",
+        });
+
+        const identifier = req.ip;
+        const { success } = await ratelimit.limit(identifier);
+
+        if (!success) {
+            return res.status(429).send("Rate limit exceeded. Please try again later." + windowSize);
+        }
+
+        next();
+    };
+};
 
 
-
-
+module.exports = {
+    rateLimitMiddleware,
+};
