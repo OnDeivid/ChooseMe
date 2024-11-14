@@ -146,7 +146,7 @@ app.put('/choice/heros/', rateLimit_heros(1, 240000), async (req, res) => {
 
         res.status(200).json('You have successfully voted.');
     } catch (err) {
-        res.status(500).json('Internal Server Error.');
+        res.status(500).json({ err });
 
     }
 });
@@ -158,4 +158,6 @@ app.put('/donation/lol/', async (req, res) => {
 
 });
 
+
+app.listen(3000, () => console.log('listening'))
 module.exports = app;
