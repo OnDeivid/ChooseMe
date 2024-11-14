@@ -7,7 +7,7 @@ const connectDB = require('./config/db');
 const calculateTimeUntilNextDay = require('./utils/nextDayTimer');
 // const rateLimit = require('express-rate-limit');
 
-const { rateLimitMiddleware } = require('./middleware/rateLimitMiddleware');
+const { rateLimit_cars, rateLimit_getDate, rateLimit_heros, rateLimit_lol } = require('./middleware/rateLimitMiddleware');
 
 const { getSectionData, increaseCount, getAllSectionData } = require('./service/competitor');
 
@@ -77,7 +77,7 @@ app.get('/', async (req, res) => {
 
 })
 
-app.get('/getDate', rateLimitMiddleware(1, 240000), (req, res) => {
+app.get('/getDate', rateLimit_getDate(1, 240000), (req, res) => {
     const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
     try {
         res.status(200).json(currentDate);
@@ -110,7 +110,7 @@ app.get('/categorySuggestion/:name', async (req, res) => {
 
 //put request
 
-app.put('/choice/lol/', rateLimitMiddleware(1, 240000), async (req, res) => {
+app.put('/choice/lol/', rateLimit_lol(1, 240000), async (req, res) => {
     console.log(240000)
     try {
         const { name } = req.body
@@ -122,7 +122,7 @@ app.put('/choice/lol/', rateLimitMiddleware(1, 240000), async (req, res) => {
     }
 });
 
-app.put('/choice/cars/', rateLimitMiddleware(1, 240000), async (req, res) => {
+app.put('/choice/cars/', rateLimit_cars(1, 240000), async (req, res) => {
     console.log(240000)
 
     try {
@@ -137,7 +137,7 @@ app.put('/choice/cars/', rateLimitMiddleware(1, 240000), async (req, res) => {
 
 });
 
-app.put('/choice/heros/', rateLimitMiddleware(1, 240000), async (req, res) => {
+app.put('/choice/heros/', rateLimit_heros(1, 240000), async (req, res) => {
     console.log(240000)
 
     try {
