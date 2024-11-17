@@ -44,7 +44,7 @@ export default function Compare({ topic, sectionData, setUpdate }) {
     
 
     useEffect(() => {
-        if (!localStorage.getItem('dataFatched')) {
+        if (!localStorage.getItem('dataFetched')) {
             navigate('/comics')
         }
         if (!localStorage.getItem('date')) {
@@ -67,7 +67,7 @@ export default function Compare({ topic, sectionData, setUpdate }) {
                     <div className='catalog-sectionComp'>
 
                         {/* Timer-----------------------------------------------------------------------------------------*/}
-                        {/* {hasVoted ? <Timer deleteStoreData={deleteAllStoredData} /> : null} */}
+                        {hasVoted ? <Timer deleteStoreData={deleteAllStoredData} /> : null}
 
                         {/* First Battle----------------------------------------------------------------------------------*/}
                         <CompetitorCard
@@ -85,7 +85,7 @@ export default function Compare({ topic, sectionData, setUpdate }) {
                         />
 
                         {/* Info------------------------------------------------------------------------------------------------*/}
-                        {/* <div className='idea'>i</div> */}
+                        <div className='idea'>i</div>
 
                         {/* Navbar----------------------------------------------------------------------------------------------*/}
                         <Navbar />
@@ -110,12 +110,12 @@ export default function Compare({ topic, sectionData, setUpdate }) {
                                 alt={`${secondCompetitor?.name} comparison`} />
 
 
-                            {secondCompetitor?.link ? <div className='donateRight donate' onClick={(e) => e.stopPropagation()}>EXSTRA VOTING <span className='adsExplanationR'>max to 5 increases</span></div> : null}
+                            {/* {secondCompetitor?.link ? <div className='donateRight donate' onClick={(e) => e.stopPropagation()}>EXSTRA VOTING <span className='adsExplanationR'>max to 5 increases</span></div> : null} */}
 
                         </div>
 
-                        <div className='bottomADS' ></div>
-                        <div className='topADs' onClick={() => { deleteItem(); deleteAllStoredData(); }}></div>
+                        {/* <div className='bottomADS' ></div>
+                        <div className='topADs' onClick={() => { deleteItem(); deleteAllStoredData(); }}></div> */}
 
                     </div>
 

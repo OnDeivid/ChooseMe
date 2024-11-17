@@ -5,7 +5,7 @@ import Home from "./components/Battles/Home/Home"
 import Comics from "./components/Battles/Comics/Comics"
 import Lol from "./components/Battles/Streamers/Lol"
 import Cars from "./components/Battles/Cars/Cars"
-import { useState } from 'react'
+import LoadingDataComponent from './components/Loading/LoadingDataComponent'
 
 function App() {
 
@@ -21,6 +21,9 @@ function App() {
 
 
       <Route path="/comics" element={<Comics />} />
+
+
+      <Route path="/waitingData..." element={<LoadingDataComponent />} />
 
       <Route path="/cars" element={<Cars />} />
 

@@ -22,7 +22,7 @@ export default function CompetitorCard({ competitor, hasVoted, checkWinnerStatus
                 alt={`${competitor?.name} comparison`} />
 
 
-            {competitor?.link ? <div className='donateLeft donate' onClick={(e) => e.stopPropagation()}>EXSTRA VOTING <span className='adsExplanationL'>max to 5 increases</span></div> : null}
+            {/* {competitor?.link ? <div className='donateLeft donate' onClick={(e) => e.stopPropagation()}>EXSTRA VOTING <span className='adsExplanationL'>max to 5 increases</span></div> : null} */}
         </div>
     )
 }

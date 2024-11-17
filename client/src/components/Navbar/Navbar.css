@@ -59,11 +59,13 @@
         background-color: var(--menuColorChange);
 
         color: var(--menuTextColor);
-        top: 14.3dvh;
+        top: 10.3dvh;
 
 
         border-bottom-left-radius: 3dvh;
-        border-bottom-right-radius: 1dvh;
+        border-bottom-right-radius: 0.67dvw;
+
+
 
         display: flex;
         position: fixed;
@@ -118,8 +120,8 @@
         width: auto;
         padding-right: 0.7dvh;
         padding-left: 0.7dvh;
-        border-bottom-right-radius: 1dvh;
-        margin-top: -0.2dvh;
+        border-bottom-right-radius: 0.7dvw;
+        margin-top: -0dvh;
 
         animation: onShowMenuOptionsDesktop 1.3s;
 
@@ -141,7 +143,7 @@
 
         color: white;
 
-        top: 14.3dvh;
+        top: 10.3dvh;
 
 
 

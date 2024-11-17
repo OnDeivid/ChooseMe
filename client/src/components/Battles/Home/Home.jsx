@@ -4,13 +4,14 @@ import data from '../../../const'
 
 import './Home.css'
 import { GET } from '../../../api'
+import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
     const row = ['twitch', 'comics', 'cars']
-
+    const navigate = useNavigate();
     useEffect(() => {
-        if (!localStorage.getItem('dataFatched')) {
-            GET(`/`).then(res => localStorage.setItem('dataFatched', JSON.stringify(res)))
+        if (!localStorage.getItem('dataFetched')) {
+            navigate('/waitingData...')
         }
     }, [])
 

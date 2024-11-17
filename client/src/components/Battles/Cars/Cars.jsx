@@ -14,11 +14,11 @@ export default function Cars() {
     const name = 'cars'
 
     useEffect(() => {
-        const storedData = JSON.parse(localStorage.getItem('dataFatched'))
+        const storedData = JSON.parse(localStorage.getItem('dataFetched'))
 
         if (storedData === null || (storedData.error || storedData.error === 'Failed to fetch')) {
-            localStorage.removeItem('dataFatched');
-            navigate('/');
+            localStorage.removeItem('dataFetched');
+            navigate('/waitingData...');
         } else {
             setSectionData(storedData.filter(e => e.section === name));
         }

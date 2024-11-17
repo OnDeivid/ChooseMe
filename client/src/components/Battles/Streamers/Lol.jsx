@@ -8,18 +8,18 @@ import Compare from '../../Compare/Compare'
 export default function Streamers() {
     const [sectionData, setSectionData] = useState([])
     const [update, setUpdate] = useState(false)
-    
+
     const navigate = useNavigate()
 
 
     const name = 'lol'
 
     useEffect(() => {
-        const storedData = JSON.parse(localStorage.getItem('dataFatched'))
+        const storedData = JSON.parse(localStorage.getItem('dataFetched'))
 
-        if (storedData === null) {
-            localStorage.removeItem('dataFatched');
-            navigate('/');
+        if (storedData === null || (storedData.error || storedData.error === 'Failed to fetch')) {
+            localStorage.removeItem('dataFetched');
+            navigate('/waitingData...');
         } else {
             setSectionData(storedData.filter(e => e.section === name));
         }
