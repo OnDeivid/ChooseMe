@@ -63,6 +63,7 @@ const rateLimit_lol = (maxRequests, windowSize) => {
 const rateLimit_cars = (maxRequests, windowSize) => {
     return async (req, res, next) => {
         try {
+            windowSize = calculateTimeUntilNextDay()
             const clientIp = req.headers['x-forwarded-for']?.split(',')[0] || req.connection.remoteAddress;
             const ratelimit = new Ratelimit({
                 redis: Redis.fromEnv(),
@@ -89,6 +90,7 @@ const rateLimit_cars = (maxRequests, windowSize) => {
 const rateLimit_heros = (maxRequests, windowSize) => {
     return async (req, res, next) => {
         try {
+            windowSize = calculateTimeUntilNextDay()
             const clientIp = req.headers['x-forwarded-for']?.split(',')[0] || req.connection.remoteAddress;
             const ratelimit = new Ratelimit({
                 redis: Redis.fromEnv(),
