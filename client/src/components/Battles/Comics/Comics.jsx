@@ -1,17 +1,32 @@
-import Compare from '../../Compare/Compare'
-import data from '../../../const'
+import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { GET } from './../../../api'
+
+import Compare from '../../Compare/Compare'
+
+import data from '../../../const'
+
 export default function Comics() {
 
     const [sectionData, setSectionData] = useState([])
     const [update, setUpdate] = useState(false)
 
+    const navigate = useNavigate()
+
+
     const name = 'heros'
-    
+
     useEffect(() => {
-        GET(`/categorySuggestion/${name}`).then(res => setSectionData(res))
+        const storedData = JSON.parse(localStorage.getItem('dataFatched'))
+
+        if (storedData === null || (storedData.error && storedData.error === 'Failed to fetch')) {
+            localStorage.removeItem('dataFatched');
+            navigate('/');
+        } else {
+            setSectionData(storedData.filter(e => e.section === name));
+        }
+
     }, [update])
+
     return (
         <div>
             <Compare battles={data.comicsCategory} setUpdate={setUpdate} sectionData={sectionData} topic={name} />

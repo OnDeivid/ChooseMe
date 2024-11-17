@@ -10,7 +10,9 @@ export const useLocalStorage = (key, initialValue) => {
     });
 
     useEffect(() => {
-        localStorage.setItem(key, JSON.stringify(storedValue));
+        if (localStorage.getItem(key) == null || localStorage.getItem(key) == 'false') {
+            localStorage.setItem(key, JSON.stringify(storedValue));
+        }
     }, [key, storedValue]);
 
     const setItem = (value) => {
@@ -30,11 +32,13 @@ export const useLocalStorage = (key, initialValue) => {
     }
 
 
-    
+
     const checkDate = (currentDate) => {
         const storedDate = localStorage.getItem('date')
-        console.log(currentDate)
-        console.log(storedDate)
+
+        if (typeof currentDate === 'object') {
+            return
+        }
 
         if (storedDate) {
             if (storedDate < currentDate) {
