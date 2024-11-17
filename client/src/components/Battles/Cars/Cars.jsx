@@ -16,7 +16,7 @@ export default function Cars() {
     useEffect(() => {
         const storedData = JSON.parse(localStorage.getItem('dataFatched'))
 
-        if (storedData === null || (storedData.error && storedData.error === 'Failed to fetch')) {
+        if (storedData === null || (storedData.error || storedData.error === 'Failed to fetch')) {
             localStorage.removeItem('dataFatched');
             navigate('/');
         } else {
