@@ -5,6 +5,7 @@ const { Redis } = require('@upstash/redis');
 
 const rateLimit_getDate = (maxRequests, windowSize) => {
     return async (req, res, next) => {
+        const cache = new Map()
         try {
             const clientIp = req.headers['x-forwarded-for']?.split(',')[0];
             const ratelimit = new Ratelimit({
@@ -12,6 +13,7 @@ const rateLimit_getDate = (maxRequests, windowSize) => {
                 limiter: Ratelimit.slidingWindow(maxRequests, windowSize + 'ms'),
                 analytics: true,
                 prefix: "picasso1",
+                ephemeralCache: cache
             });
 
             const identifier = clientIp;
@@ -39,6 +41,7 @@ const rateLimit_lol = (maxRequests, windowSize) => {
                 limiter: Ratelimit.slidingWindow(maxRequests, windowSize + 'ms'),
                 analytics: true,
                 prefix: "picasso2",
+                ephemeralCache: cache
             });
 
             const identifier = clientIp;
@@ -65,6 +68,7 @@ const rateLimit_cars = (maxRequests, windowSize) => {
                 limiter: Ratelimit.slidingWindow(maxRequests, windowSize + 'ms'),
                 analytics: true,
                 prefix: "picasso3",
+                ephemeralCache: cache
             });
 
             const identifier = clientIp;
@@ -91,6 +95,7 @@ const rateLimit_heros = (maxRequests, windowSize) => {
                 limiter: Ratelimit.slidingWindow(maxRequests, windowSize + 'ms'),
                 analytics: true,
                 prefix: "picasso4",
+                ephemeralCache: cache
             });
 
             const identifier = clientIp;
