@@ -1,10 +1,13 @@
 require('dotenv').config()
 const { Ratelimit } = require('@upstash/ratelimit')
+const moment = require('moment-timezone');
 const { Redis } = require('@upstash/redis');
+const calculateTimeUntilNextDay = require('./../utils/nextDayTimer')
 
 const rateLimit_getDate = (maxRequests, windowSize) => {
     return async (req, res, next) => {
         try {
+            windowSize = calculateTimeUntilNextDay()
             const clientIp = req.headers['x-forwarded-for']?.split(',')[0];
             const ratelimit = new Ratelimit({
                 redis: Redis.fromEnv(),
@@ -15,6 +18,7 @@ const rateLimit_getDate = (maxRequests, windowSize) => {
 
             const identifier = clientIp;
             const { success } = await ratelimit.limit(identifier);
+
 
             if (!success) {
                 return res.status(429).send("Rate limit exceeded. Please try again later." + windowSize);
@@ -31,6 +35,7 @@ const rateLimit_getDate = (maxRequests, windowSize) => {
 const rateLimit_lol = (maxRequests, windowSize) => {
     return async (req, res, next) => {
         try {
+            windowSize = calculateTimeUntilNextDay()
             const clientIp = (req.headers['x-forwarded-for'] || req.connection.remoteAddress).split(',')[0].trim();
             console.log(clientIp)
             const ratelimit = new Ratelimit({
