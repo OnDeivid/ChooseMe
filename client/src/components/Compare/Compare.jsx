@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
+import CompetitorCard from './CompetitorCard';
 import Navbar from './../Navbar/Navbar';
 import Timer from '../Timer/Timer';
 
@@ -8,7 +10,6 @@ import { checkWinnerStatus } from '../../utils/checkWinnerStatus';
 import { voteFormatting } from '../../utils/dataFormatting';
 import { GET, PUT } from '../../api';
 
-
 import './Compare.css';
 
 export default function Compare({ topic, sectionData, setUpdate }) {
@@ -16,8 +17,9 @@ export default function Compare({ topic, sectionData, setUpdate }) {
     const [selectedChoice, setSelectedChoice] = useState('');
     const [firstCompetitor, setFirstCompetitor] = useState([])
     const [secondCompetitor, setSecondCompetitor] = useState([])
-    const [buttonRestriction, setButtonRestriction] = useState(false)
 
+
+    const navigate = useNavigate();
 
     const { storedValue, setItem, deleteItem, deleteAllStoredData, checkDate } = useLocalStorage(topic, false);
 
@@ -25,6 +27,9 @@ export default function Compare({ topic, sectionData, setUpdate }) {
         try {
             if (!name) {
                 return
+            }
+            if (localStorage.getItem(topic + `-Choice`)) {
+                throw new Error('u already voted')
             }
             const data = await PUT(`/choice/${section}`, { name })
             if (data.error) {
@@ -35,9 +40,16 @@ export default function Compare({ topic, sectionData, setUpdate }) {
             console.log(err)
         }
 
-    }
+    }  
+    
+
     useEffect(() => {
-        GET('/getDate').then(res => checkDate(res))
+        if (!localStorage.getItem('dataFatched')) {
+            navigate('/comics')
+        }
+        if (!localStorage.getItem('date')) {
+            GET('/getDate').then(res => checkDate(res))
+        }
     }, [])
 
     useEffect(() => {
@@ -55,42 +67,32 @@ export default function Compare({ topic, sectionData, setUpdate }) {
                     <div className='catalog-sectionComp'>
 
                         {/* Timer-----------------------------------------------------------------------------------------*/}
-                        {hasVoted ? <Timer deleteStoreData={deleteAllStoredData} /> : null}
+                        {/* {hasVoted ? <Timer deleteStoreData={deleteAllStoredData} /> : null} */}
 
                         {/* First Battle----------------------------------------------------------------------------------*/}
-                        <div key={firstCompetitor?.name}
-                            onClick={() => { setItem('batman'); setButtonRestriction(true); setSelectedChoice(1); onChoose(topic, firstCompetitor.name) }}
-                            className='compare-item'>
+                        <CompetitorCard
+                            topic={topic}
 
+                            hasVoted={hasVoted}
+                            competitor={firstCompetitor}
+                            selectedChoice={selectedChoice}
 
-                            <div className='nameHolder' onClick={(e) => e.stopPropagation()}>
-                                {secondCompetitor?.link ?
-                                    <h3 className='name' >Twith: <a href={secondCompetitor?.link}>{secondCompetitor?.name}</a></h3>
-                                    :
-                                    <h3 className='name'>{secondCompetitor?.name}</h3>}
-                            </div>
-
-                            {hasVoted && <h1 className='voted'>VOTED</h1>}
-                            {hasVoted && <h1 className='votes-count'>{firstCompetitor?.votes ? voteFormatting(firstCompetitor?.votes) : null}</h1>}
-
-                            <img className={`compare-image ${checkWinnerStatus(1, selectedChoice, topic)}`}
-                                src={firstCompetitor?.img ? firstCompetitor.img : 'https://w0.peakpx.com/wallpaper/605/425/HD-wallpaper-loading-lock-phone-premium.jpg'}
-                                alt={`${firstCompetitor?.name} comparison`} />
-
-
-
-                            {firstCompetitor?.link ? <div className='donateLeft donate' onClick={(e) => e.stopPropagation()}>EXSTRA VOTING</div> : null}
-                        </div>
+                            onChoose={onChoose}
+                            setItem={setItem}
+                            voteFormatting={voteFormatting}
+                            checkWinnerStatus={checkWinnerStatus}
+                            setSelectedChoice={setSelectedChoice}
+                        />
 
                         {/* Info------------------------------------------------------------------------------------------------*/}
-                        <div className='idea'>i</div>
+                        {/* <div className='idea'>i</div> */}
 
                         {/* Navbar----------------------------------------------------------------------------------------------*/}
                         <Navbar />
 
                         {/* Second Battle----------------------------------------------------------------------------------------*/}
                         <div key={secondCompetitor?.name}
-                            onClick={() => { setItem('spider-man'); setSelectedChoice(2); setButtonRestriction(true); onChoose(topic, secondCompetitor.name) }}
+                            onClick={() => { setItem('competitor-2'); setSelectedChoice(2); onChoose(topic, secondCompetitor.name) }}
                             className='compare-item'>
 
                             <div className='nameHolder' onClick={(e) => e.stopPropagation()} >
@@ -100,20 +102,21 @@ export default function Compare({ topic, sectionData, setUpdate }) {
                                     <h3 className='name'>{secondCompetitor?.name}</h3>}
                             </div>
 
-                            {hasVoted && <h1 className='voted'>VOTED</h1>}
+                            {hasVoted && <h1 className='voted'>{localStorage.getItem(topic) === `"competitor-2"` ? 'CHOOSEN' : 'REJECTED'}</h1>}
                             {hasVoted && <h1 className='votes-count'>{secondCompetitor?.votes ? voteFormatting(secondCompetitor?.votes) : null}</h1>}
 
-                            <img className={`compare-image ${checkWinnerStatus(2, selectedChoice, topic)}`}
-                                src={secondCompetitor?.img ? secondCompetitor.img : 'https://w0.peakpx.com/wallpaper/605/425/HD-wallpaper-loading-lock-phone-premium.jpg'}
+                            <img className={`compare-image second ${checkWinnerStatus(2, selectedChoice, topic)}`}
+                                src={secondCompetitor?.img ? secondCompetitor.img : 'https://www.jowhareh.com/images/Jowhareh/galleries_9/poster_4a6186af-a71c-4f71-8f9e-2c3f3c6f7da1.jpeg'}
                                 alt={`${secondCompetitor?.name} comparison`} />
 
 
+                            {secondCompetitor?.link ? <div className='donateRight donate' onClick={(e) => e.stopPropagation()}>EXSTRA VOTING <span className='adsExplanationR'>max to 5 increases</span></div> : null}
 
-                            {secondCompetitor?.link ? <div className='donateRight donate' onClick={(e) => e.stopPropagation()}>EXSTRA VOTING</div> : null}
                         </div>
 
-                        <div className='topADS' onClick={() => { deleteItem(); deleteAllStoredData(); }}></div>
                         <div className='bottomADS' ></div>
+                        <div className='topADs' onClick={() => { deleteItem(); deleteAllStoredData(); }}></div>
+
                     </div>
 
                 </div>
