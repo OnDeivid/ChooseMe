@@ -1,14 +1,14 @@
 .timerHolder {
-    background-color: #0e0052;
+    background-color: #190385;
    
-    width: 100vh;
-    height: 10.6vh;
-    top: 78.1dvh;
-    /* Replace margin-top with top in vh */
+    width: 100dvh;
+    height: 13.6dvh;
+    top: 75.7dvh;
+    /* Replace margin-top with top in dvh */
    
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border: 0.3vh solid yellow;
+    border-top-left-radius: 1dvh;
+    border-top-right-radius: 1dvh;
+    border: 0.3dvh solid yellow;
     
     position: fixed;
     
@@ -51,17 +51,17 @@
 .rules {
     color: aliceblue;
 
-    width: 100vh;
-    height: 8vh;
+    width: 100dvh;
+    height: 8dvh;
     
-    font-size: 5vh;
+    font-size: 5dvh;
     
     text-align: center;
     
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     
-    margin-top: 1.5vh;
+    margin-top: 2.9dvh;
     
     position: fixed;
     
@@ -75,7 +75,7 @@
 
 /* @media only screen and (min-resolution: 1.88dppx) and (max-resolution: 3.65dppx) {
     .timerHolder {
-        top: 73.3vh;
+        top: 73.3dvh;
         animation: onShowTimer 0.5s;
     }
 
@@ -83,18 +83,18 @@
 
 @media only screen and (min-resolution: 3.66dppx) and (max-resolution: 6.65dppx) {
     .timerHolder {
-        top: 80.5dvh;
+        top: 80.5ddvh;
         animation: onShowTimer 0.5s;
     }
 }
 
 /* @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     .rules {
-        top: 74.5vh;
-        width: 50vh;
-        height: 8vh;
+        top: 74.5dvh;
+        width: 50dvh;
+        height: 8dvh;
         text-align: center;
-        font-size: 5vh;
+        font-size: 5dvh;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         animation: onShowTimerText 1s;
@@ -103,13 +103,13 @@
     .timerHolder {
         position: fixed;
         background-color: #0e0052;
-        width: 50vh;
-        height: 10vh;
-        top: 77.5vh;
+        width: 50dvh;
+        height: 10dvh;
+        top: 77.5dvh;
         z-index: 5;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
-        border: 0.3vh solid yellow;
+        border: 0.3dvh solid yellow;
         animation: onShowTimer 0.5s;
     }
 } */
@@ -140,6 +140,6 @@
     100% {
         opacity: 1;
 
-        height: 13.6vh;
+        height: 13.6dvh;
     }
 }

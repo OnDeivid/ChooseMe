@@ -2,7 +2,6 @@ const CompetitorModel = require("../models/competitor");
 
 exports.getSectionData = async (sectionName) => await CompetitorModel.find({ section: sectionName });
 
-
 exports.getAllSectionData = async () => await CompetitorModel.find();
 
 exports.increaseCount = async (sectionName, name) => {
