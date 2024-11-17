@@ -58,18 +58,13 @@ connectDB()
 
 //get request
 app.get('/', async (req, res) => {
-
     const isAjaxRequest = (req.get('X-Requested-With') == 'XMLHttpRequest');
-
     if (!isAjaxRequest) {
         res.status(200).json('something get wrong');
     } else {
-
         try {
             const data = await getAllSectionData()
-
             res.status(200).json(data);
-
         } catch (err) {
             res.status(500).json('Internal Server Error.');
         }
@@ -95,12 +90,9 @@ app.get('/categorySuggestion/:name', async (req, res) => {
     if (!isAjaxRequest) {
         res.status(200).json('something get wrong');
     } else {
-
         try {
             const data = await getSectionData(sectionName)
-
             res.status(200).json(data);
-
         } catch (err) {
             res.status(500).json('Internal Server Error.');
         }
@@ -109,7 +101,6 @@ app.get('/categorySuggestion/:name', async (req, res) => {
 
 
 //put request
-
 app.put('/choice/lol/', rateLimit_lol(1, 3600000), async (req, res) => {
     console.log(3600000)
     try {
@@ -124,7 +115,6 @@ app.put('/choice/lol/', rateLimit_lol(1, 3600000), async (req, res) => {
 
 app.put('/choice/cars/', rateLimit_cars(1, 3600000), async (req, res) => {
     console.log(3600000)
-
     try {
         const { name } = req.body
         await increaseCount('cars', name)
@@ -132,14 +122,11 @@ app.put('/choice/cars/', rateLimit_cars(1, 3600000), async (req, res) => {
         res.status(200).json('You have successfully voted.');
     } catch (err) {
         res.status(500).json('Internal Server Error.');
-
     }
-
 });
 
 app.put('/choice/heros/', rateLimit_heros(1, 3600000), async (req, res) => {
     console.log(3600000)
-
     try {
         const { name } = req.body
         await increaseCount('heros', name)
@@ -150,9 +137,6 @@ app.put('/choice/heros/', rateLimit_heros(1, 3600000), async (req, res) => {
 
     }
 });
-
-
-
 
 app.put('/donation/lol/', async (req, res) => {
 

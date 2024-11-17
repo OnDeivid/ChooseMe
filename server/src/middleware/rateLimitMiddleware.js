@@ -1,6 +1,5 @@
 require('dotenv').config()
 const { Ratelimit } = require('@upstash/ratelimit')
-const moment = require('moment-timezone');
 const { Redis } = require('@upstash/redis');
 
 const rateLimit_getDate = (maxRequests, windowSize) => {
