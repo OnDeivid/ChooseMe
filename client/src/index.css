@@ -10,15 +10,26 @@
   -moz-osx-font-smoothing: grayscale;
 
 
+  --background-color-pick: #0049B7;
+  --imageHolder: #eeeeee;
+  --adsBackgroundColor: #0049B7;
+
+  --menuColorChange: #0049B7;
+  --menuTextColor: rgb(255, 255, 255);
+  --menuTextColorHover: rgb(255, 0, 0);
+  --menuBackgroundHoverColor: rgb(219, 219, 219);
+  --menuTextColorActive: red;
+
+
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100dvw;
   /* background-color: var(--darkBlue); */
-  background-color: rgb(231, 231, 231);
+  background-color: var(--background-color-pick);
 
-  overflow:auto;
+  overflow: auto;
 
   --darkBlue: #00092C;
   --darkOrange: #B20600;
