@@ -1082,7 +1082,7 @@
     }
 
     .adsExplanationL {
-        background-color: var(--adsBackgroundColor);
+        background-color:transparent;
 
         position: absolute;
         width: 60%;
@@ -1091,14 +1091,15 @@
         padding-left: 1dvh;
         padding-right: 1dvh;
 
-        top: 75%;
+        top: 67%;
         left: 16%;
         font-size: 1.3dvh;
 
     }
 
     .adsExplanationR {
-        background-color: var(--adsBackgroundColor);
+        background-color:transparent;
+
 
         position: absolute;
         width: 60%;
@@ -1107,7 +1108,7 @@
         padding-left: 1dvh;
         padding-right: 1dvh;
 
-        bottom: 75%;
+        bottom: 67%;
         left: 16%;
         font-size: 1.3dvh;
     }

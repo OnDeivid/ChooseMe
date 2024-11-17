@@ -16,8 +16,6 @@ const sectionName = {
     streamers_csgo: 'lol',
     cars: 'cars',
     comics: 'comics'
-
-
 }
 
 
