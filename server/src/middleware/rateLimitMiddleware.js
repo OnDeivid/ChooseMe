@@ -99,7 +99,7 @@ const rateLimit_heros = (maxRequests, windowSize) => {
             const clientIp = req.headers['x-forwarded-for']?.split(',')[0] || req.connection.remoteAddress;
             const ratelimit = new Ratelimit({
                 redis: Redis.fromEnv(),
-                limiter: Ratelimit.fixedWindow(maxRequests, dynamicTimer + 'ms'),
+                limiter: Ratelimit.slidingWindow(maxRequests, dynamicTimer + ' ms'),
                 analytics: true,
                 prefix: "picasso4",
             });
