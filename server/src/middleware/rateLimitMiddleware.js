@@ -7,12 +7,10 @@ const calculateTimeUntilNextDay = require('./../utils/nextDayTimer')
 const rateLimit_getDate = (maxRequests, windowSize) => {
     return async (req, res, next) => {
         try {
-            windowSize = calculateTimeUntilNextDay()
-
             const clientIp = req.headers['x-forwarded-for']?.split(',')[0];
             const ratelimit = new Ratelimit({
                 redis: Redis.fromEnv(),
-                limiter: Ratelimit.slidingWindow(maxRequests, windowSize + 'ms'),
+                limiter: Ratelimit.slidingWindow(maxRequests, windowSize + ' s'),
                 analytics: true,
                 prefix: "picasso1",
             });
@@ -36,13 +34,10 @@ const rateLimit_getDate = (maxRequests, windowSize) => {
 const rateLimit_lol = (maxRequests, windowSize) => {
     return async (req, res, next) => {
         try {
-            windowSize = calculateTimeUntilNextDay()
-
             const clientIp = (req.headers['x-forwarded-for'] || req.connection.remoteAddress).split(',')[0].trim();
-            console.log(clientIp)
             const ratelimit = new Ratelimit({
                 redis: Redis.fromEnv(),
-                limiter: Ratelimit.slidingWindow(maxRequests, windowSize + 'ms'),
+                limiter: Ratelimit.slidingWindow(maxRequests, windowSize + ' s'),
                 analytics: true,
                 prefix: "picasso2",
             });
@@ -65,12 +60,10 @@ const rateLimit_lol = (maxRequests, windowSize) => {
 const rateLimit_cars = (maxRequests, windowSize) => {
     return async (req, res, next) => {
         try {
-            windowSize = calculateTimeUntilNextDay()
-
             const clientIp = req.headers['x-forwarded-for']?.split(',')[0] || req.connection.remoteAddress;
             const ratelimit = new Ratelimit({
                 redis: Redis.fromEnv(),
-                limiter: Ratelimit.slidingWindow(maxRequests, windowSize + 'ms'),
+                limiter: Ratelimit.slidingWindow(maxRequests, windowSize + ' s'),
                 analytics: true,
                 prefix: "picasso3",
             });
@@ -93,13 +86,10 @@ const rateLimit_cars = (maxRequests, windowSize) => {
 const rateLimit_heros = (maxRequests, windowSize) => {
     return async (req, res, next) => {
         try {
-            windowSize = calculateTimeUntilNextDay()
-            const dynamicTimer = windowSize
-            console.log(dynamicTimer)
             const clientIp = req.headers['x-forwarded-for']?.split(',')[0] || req.connection.remoteAddress;
             const ratelimit = new Ratelimit({
                 redis: Redis.fromEnv(),
-                limiter: Ratelimit.slidingWindow(maxRequests, dynamicTimer + ' ms'),
+                limiter: Ratelimit.slidingWindow(maxRequests, windowSize + ' s'),
                 analytics: true,
                 prefix: "picasso4",
             });

@@ -28,26 +28,26 @@ connectDB()
 
 
 // const limiterCars = rateLimit({
-//     windowMs: 3600000, 
+//     windowMs: 86400, 
 //     max: 1, 
 //     standardHeaders: true,
 //     legacyHeaders: false, 
 
 // });
 // const limiterLol = rateLimit({
-//     windowMs: 3600000,
+//     windowMs: 86400,
 //     max: 1, 
 //     standardHeaders: true, 
 //     legacyHeaders: false, 
 // });
 // const limiterHeros = rateLimit({
-//     windowMs: 3600000,
+//     windowMs: 86400,
 //     max: 1, 
 //     standardHeaders: true, 
 //     legacyHeaders: false, 
 // });
 // const getDate = rateLimit({
-//     windowMs: 3600000,
+//     windowMs: 86400,
 //     max: 1, 
 //     standardHeaders: true, 
 //     legacyHeaders: false, 
@@ -72,7 +72,7 @@ app.get('/', async (req, res) => {
 
 })
 
-app.get('/getDate', rateLimit_getDate(2, 3600000), (req, res) => {
+app.get('/getDate', rateLimit_getDate(2, 86400), (req, res) => {
     const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
     try {
         res.status(200).json(currentDate);
@@ -101,8 +101,8 @@ app.get('/categorySuggestion/:name', async (req, res) => {
 
 
 //put request
-app.put('/choice/lol/', rateLimit_lol(1, 3600000), async (req, res) => {
-    console.log(3600000)
+app.put('/choice/lol/', rateLimit_lol(1, 86400), async (req, res) => {
+    console.log(86400)
     try {
         const { name } = req.body
         await increaseCount('lol', name)
@@ -113,8 +113,8 @@ app.put('/choice/lol/', rateLimit_lol(1, 3600000), async (req, res) => {
     }
 });
 
-app.put('/choice/cars/', rateLimit_cars(1, 3600000), async (req, res) => {
-    console.log(3600000)
+app.put('/choice/cars/', rateLimit_cars(1, 86400), async (req, res) => {
+    console.log(86400)
     try {
         const { name } = req.body
         await increaseCount('cars', name)
@@ -125,8 +125,8 @@ app.put('/choice/cars/', rateLimit_cars(1, 3600000), async (req, res) => {
     }
 });
 
-app.put('/choice/heros/', rateLimit_heros(1, 3600000), async (req, res) => {
-    console.log(3600000)
+app.put('/choice/heros/', rateLimit_heros(1, 86400), async (req, res) => {
+    console.log(86400)
     try {
         const { name } = req.body
         await increaseCount('heros', name)
