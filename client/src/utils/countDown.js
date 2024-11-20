@@ -23,7 +23,7 @@ export function startCountdownToNextDay(deleteDataFunction, setCountDown, naviga
             deleteDataFunction();
             setHideTimer(true);
             navigate('/');
-            
+            localStorage.clear()
             const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD'); // Get current date in Berlin
             localStorage.setItem('date', currentDate);
 

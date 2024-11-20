@@ -72,7 +72,7 @@ app.get('/', async (req, res) => {
 
 })
 
-app.get('/getDate', rateLimit_getDate(2, 86400), (req, res) => {
+app.get('/getDate', (req, res) => {
     const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD');
     try {
         res.status(200).json(currentDate);

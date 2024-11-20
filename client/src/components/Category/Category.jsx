@@ -27,9 +27,7 @@ export default function Category({ row, battles, sectionsData }) {
                             </div>
                         )
                     })}
-                    <div className='clearData' style={{ backgroundColor: 'red', color: 'red' }} onClick={() => localStorage.clear()} >here</div>
-                    <div className='topADS'></div>
-                    <div className='bottomADS-category'></div>
+
                 </div>
 
             </div>
