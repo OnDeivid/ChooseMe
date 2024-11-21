@@ -12,7 +12,6 @@ export default function Comics() {
 
     const navigate = useNavigate()
 
-
     const name = 'heros'
 
     useEffect(() => {

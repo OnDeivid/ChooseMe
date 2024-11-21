@@ -85,7 +85,7 @@ export default function LoadingDataComponent() {
                     }}
                 />
             </div>
-            {!errorMessage ? <SimpleComponent /> : <h3> {errorMessage} Please try again later.</h3>}
+            {!errorMessage ? <SimpleComponent /> : <h3> {errorMessage}, Please Reload or Try again later.</h3>}
 
         </div>
     );

@@ -1,7 +1,5 @@
 /* Main container styles */
 .main-container {
-
-
     height: 100dvh;
     width: 100dvw;
     display: flex;
@@ -117,7 +115,7 @@
 
 }
 
-.cars-item {
+.goat-item {
     background-color: rgb(0, 0, 0);
 }
 

@@ -25,7 +25,7 @@ function App() {
 
       <Route path="/waitingData..." element={<LoadingDataComponent />} />
 
-      <Route path="/cars" element={<Cars />} />
+      <Route path="/goat" element={<Cars />} />
 
 
 

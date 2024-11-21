@@ -3,11 +3,11 @@ import Category from '../../Category/Category'
 import data from '../../../const'
 
 import './Home.css'
-import { GET } from '../../../api'
+
 import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
-    const row = ['twitch', 'comics', 'cars']
+    const row = ['twitch', 'comics', 'goat']
     const navigate = useNavigate();
     useEffect(() => {
         if (!localStorage.getItem('dataFetched')) {

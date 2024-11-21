@@ -19,7 +19,7 @@ export default function Navbar() {
         { label: 'Heros', endpoint: '/comics' },
         { label: 'LoL', endpoint: '/lol' },
         { label: 'CS:GO', endpoint: '/csgo' },
-        { label: 'Cars', endpoint: '/cars' },
+        { label: 'Goat', endpoint: '/goat' },
         { label: 'About', endpoint: '/about' }
     ];
 

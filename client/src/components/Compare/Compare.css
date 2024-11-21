@@ -204,7 +204,7 @@
     }
 
     .adsExplanationL {
-        background-color:transparent;
+        background-color: transparent;
 
         position: absolute;
         width: 60%;
@@ -220,7 +220,7 @@
     }
 
     .adsExplanationR {
-        background-color:transparent;
+        background-color: transparent;
 
 
         position: absolute;
@@ -317,29 +317,6 @@
 
 
 
-    .idea {
-        background-color: rgb(27, 0, 235);
-        position: absolute;
-
-        left: 10px;
-        top: 10px;
-
-        width: 4.5vw;
-        height: 10vh;
-        max-width: 20px;
-        max-height: 20px;
-
-
-        border-radius: 20px;
-        box-shadow: 0px 1px 1px 1px black;
-        color: rgb(255, 255, 255);
-
-        font-size: 10px;
-        text-align: center;
-        align-content: center;
-        transition: background-color 0.2s;
-        z-index: 4;
-    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -582,27 +559,26 @@
     }
 
     .idea {
-        background-color: rgb(27, 0, 235);
-        position: absolute;
+        background-color: rgb(214, 214, 214);
+        box-shadow: 0dvh 0dvh 0.3dvh 0.1dvh black;
+        position: fixed;
 
-        left: 10px;
-        top: 10px;
+        left: 0.5dvw;
+        top: 5dvh;
 
-        width: 4.5svw;
-        height: 10svh;
-        max-width: 20px;
-        max-height: 20px;
+        width: 9svw;
+        height: 5.4svh;
+        max-width: 20dvw;
+        max-height: 20dvh;
 
-
-        border-radius: 20px;
-        box-shadow: 0px 1px 1px 1px black;
-        color: rgb(255, 255, 255);
-
+        border-radius: none;
+        color: rgb(0, 0, 0);
+        border-radius: 100%;
         font-size: 10px;
         text-align: center;
         align-content: center;
         transition: background-color 0.2s;
-        z-index: 4;
+        z-index: 100;
     }
 }
 
@@ -674,6 +650,29 @@
         top: 61%;
         font-size: 3.5svh;
         width: 67%;
+    }
+
+    .idea {
+        background-color: rgb(214, 214, 214);
+        box-shadow: 0dvh 0dvh 0.3dvh 0.1dvh black;
+
+        position: fixed;
+
+        left: 2dvw;
+        top: 5dvh;
+        width: 4svw;
+        height: 9svh;
+        max-width: 20dvw;
+        max-height: 20dvh;
+
+        border-radius: none;
+        color: rgb(0, 0, 0);
+        border-radius: 100%;
+        font-size: 10px;
+        text-align: center;
+        align-content: center;
+        transition: background-color 0.2s;
+        z-index: 4;
     }
 
 }
@@ -840,30 +839,6 @@
         transition: 1s;
     }
 
-
-    .idea {
-        background-color: rgb(27, 0, 235);
-        position: absolute;
-
-        left: 10px;
-        top: 10px;
-
-        width: 4.5vw;
-        height: 10vh;
-        max-width: 20px;
-        max-height: 20px;
-
-
-        border-radius: 20px;
-        box-shadow: 0px 1px 1px 1px black;
-        color: rgb(255, 255, 255);
-
-        font-size: 10px;
-        text-align: center;
-        align-content: center;
-        transition: background-color 0.2s;
-        z-index: 4;
-    }
 
     .voted {
         top: 46%;
