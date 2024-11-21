@@ -138,10 +138,6 @@ app.put('/choice/heros/', rateLimit_heros(1, 86400), async (req, res) => {
     }
 });
 
-app.put('/donation/lol/', async (req, res) => {
-
-});
-
 
 // app.listen(3000, () => console.log('listening'))
 module.exports = app;

@@ -47,9 +47,9 @@ export default function Compare({ topic, sectionData, setUpdate }) {
         if (!localStorage.getItem('dataFetched')) {
             navigate('/comics')
         }
-        if (!localStorage.getItem('date')) {
+        // if (!localStorage.getItem('date')) {
             GET('/getDate').then(res => checkDate(res))
-        }
+        // }
     }, [])
 
     useEffect(() => {
