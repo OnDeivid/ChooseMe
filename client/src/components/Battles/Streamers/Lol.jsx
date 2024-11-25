@@ -27,7 +27,7 @@ export default function Streamers() {
     }, [update])
 
     return (
-        <Compare battles={data.streamersCompare} setUpdate={setUpdate} sectionData={sectionData} topic={name} />
+        <Compare battles={data.streamersCompare} setUpdate={setUpdate} setSectionData={setSectionData} sectionData={sectionData} topic={name} />
     )
 }
 

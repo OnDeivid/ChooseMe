@@ -12,7 +12,7 @@ import { GET, PUT } from '../../api';
 
 import './Compare.css';
 
-export default function Compare({ topic, sectionData, setUpdate }) {
+export default function Compare({ topic, sectionData, setUpdate, setSectionData }) {
     const [hasVoted, setHasVoted] = useState();
     const [selectedChoice, setSelectedChoice] = useState('');
     const [firstCompetitor, setFirstCompetitor] = useState([])
@@ -30,7 +30,7 @@ export default function Compare({ topic, sectionData, setUpdate }) {
 
     const navigate = useNavigate();
 
-    const { storedValue, setItem, deleteItem, deleteAllStoredData, checkDate } = useLocalStorage(topic, false);
+    const { storedValue, setItem, deleteAllStoredData, checkDate } = useLocalStorage(topic, false);
 
     async function onChoose(section, name) {
         try {
@@ -76,6 +76,8 @@ export default function Compare({ topic, sectionData, setUpdate }) {
                     });
                     localStorage.setItem('dataFetched', JSON.stringify(data));
                     localStorage.setItem('update', 'sd')
+                    setSectionData(data.filter(e => e.section === topic));
+
                     resetTimer()
                     console.log('Data has been updated!');
                 } catch (err) {

@@ -28,7 +28,7 @@ export default function Comics() {
 
     return (
         <div>
-            <Compare battles={data.comicsCategory} setUpdate={setUpdate} sectionData={sectionData} topic={name} />
+            <Compare battles={data.comicsCategory} setUpdate={setUpdate} sectionData={sectionData} setSectionData={setSectionData} topic={name} />
         </div>
     )
 }

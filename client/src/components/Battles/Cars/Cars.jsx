@@ -25,6 +25,6 @@ export default function Cars() {
     }, [update])
 
     return (
-        <Compare battles={data.carsCompare} topic={name} setUpdate={setUpdate} sectionData={sectionData} />
+        <Compare battles={data.carsCompare} topic={name} setUpdate={setUpdate} setSectionData={setSectionData} sectionData={sectionData} />
     )
 }
