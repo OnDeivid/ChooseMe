@@ -19,6 +19,15 @@ export default function Compare({ topic, sectionData, setUpdate }) {
     const [secondCompetitor, setSecondCompetitor] = useState([])
 
 
+
+    function resetTimer() {
+        const now = Date.now();
+        const endTime = now + 1 * 60 * 1000; // Set timer to 1 minute (adjust as needed)
+        localStorage.setItem('timerEndTime', endTime);
+        setUpdateTimer(true); // Trigger the timer update
+    }
+
+
     const navigate = useNavigate();
 
     const { storedValue, setItem, deleteItem, deleteAllStoredData, checkDate } = useLocalStorage(topic, false);
@@ -32,6 +41,9 @@ export default function Compare({ topic, sectionData, setUpdate }) {
                 throw new Error('u already voted')
             }
             const data = await PUT(`/choice/${section}`, { name })
+            if (!localStorage.getItem('valueTimer')) {
+                localStorage.setItem('valueTimer', true)
+            }
             if (data.error) {
                 throw new Error('to many requests!')
             }
@@ -50,23 +62,27 @@ export default function Compare({ topic, sectionData, setUpdate }) {
         // if (!localStorage.getItem('date')) {
         GET('/getDate').then(res => checkDate(res))
         // }
-        GET('/category/votesUpdated').then(res => {
-            try {
-                const data = JSON.parse(localStorage.getItem('dataFetched'))
-                res.map(e => {
-                    data.forEach(el => {
-                        if (el.name == e.name) {
-                            el.votes = e.votes
-                        }
+
+        if (!localStorage.getItem('update')) {
+            GET('/category/votesUpdated').then(res => {
+                try {
+                    const data = JSON.parse(localStorage.getItem('dataFetched'));
+                    res?.map(e => {
+                        data?.forEach(el => {
+                            if (el.name === e.name) {
+                                el.votes = e.votes;
+                            }
+                        });
                     });
-                    localStorage.removeItem('dataFetched')
-                    localStorage.setItem('dataFetched', JSON.stringify(data))
-                })
-                console.log('successfily updated data')
-            } catch (err) {
-                console.log({ 'error': err })
-            }
-        })
+                    localStorage.setItem('dataFetched', JSON.stringify(data));
+                    localStorage.setItem('update', 'sd')
+                    resetTimer()
+                    console.log('Data has been updated!');
+                } catch (err) {
+                    console.log({ 'error': err });
+                }
+            });
+        }
     }, [])
 
     useEffect(() => {

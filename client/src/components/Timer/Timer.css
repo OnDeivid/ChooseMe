@@ -54,14 +54,14 @@
     width: 100dvh;
     height: 8dvh;
     
-    font-size: 5dvh;
+    font-size: 4dvh;
     
     text-align: center;
     
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     
-    margin-top: 2.9dvh;
+    margin-top: 0.2%;
     
     position: fixed;
     
@@ -70,6 +70,15 @@
 }
 
 
+.nextUpdate{
+    width: 100dvh;
+    height: 8dvh; 
+    font-size: 3.5dvh; 
+    text-align: center;
+    margin-top: 7%;
+    animation: onShowTimerText 1s;
+
+}
 
 
 
