@@ -22,7 +22,6 @@ export default function Cars() {
         } else {
             setSectionData(storedData.filter(e => e.section === name));
         }
-        console.log(storedData)
     }, [update])
 
     return (

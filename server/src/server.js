@@ -100,8 +100,15 @@ app.get('/categorySuggestion/:name', async (req, res) => {
 });
 
 app.get('/category/votesUpdated', async (req, res) => {
-    const data = await getUpdatedVotes()
-    console.log(data)
+    
+    try {
+        const data = await getUpdatedVotes()
+        res.status(200).json(data);
+
+    } catch (err) {
+        res.status(500).json('Internal Server Error.');
+    }
+
 })
 
 

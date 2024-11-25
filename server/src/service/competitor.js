@@ -26,7 +26,6 @@ exports.increaseCount = async (sectionName, name) => {
 
 exports.getUpdatedVotes = async () => {
     const votes = await CompetitorModel.find({}, 'votes name');
-    console.log(votes)
     return votes
 }
 
