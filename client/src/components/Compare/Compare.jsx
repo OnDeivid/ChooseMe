@@ -50,7 +50,23 @@ export default function Compare({ topic, sectionData, setUpdate }) {
         // if (!localStorage.getItem('date')) {
         GET('/getDate').then(res => checkDate(res))
         // }
-        GET('/category/votesUpdated').then(res => console.log(res))
+        GET('/category/votesUpdated').then(res => {
+            try {
+                const data = JSON.parse(localStorage.getItem('dataFetched'))
+                res.map(e => {
+                    data.forEach(el => {
+                        if (el.name == e.name) {
+                            el.votes = e.votes
+                        }
+                    });
+                    localStorage.removeItem('dataFetched')
+                    localStorage.setItem('dataFetched', JSON.stringify(data))
+                })
+                console.log('successfily updated data')
+            } catch (err) {
+                console.log({ 'error': err })
+            }
+        })
     }, [])
 
     useEffect(() => {
