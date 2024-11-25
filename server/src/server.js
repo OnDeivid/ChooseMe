@@ -100,7 +100,7 @@ app.get('/categorySuggestion/:name', async (req, res) => {
 });
 
 // 600,000
-app.get('/category/votesUpdated', rateLimit_votesUpdated(1, 600000), async (req, res) => {
+app.get('/category/votesUpdated', rateLimit_votesUpdated(1, 60), async (req, res) => {
 
     try {
         const data = await getUpdatedVotes()
