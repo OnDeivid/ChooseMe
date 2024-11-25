@@ -9,7 +9,7 @@ const calculateTimeUntilNextDay = require('./utils/nextDayTimer');
 
 const { rateLimit_cars, rateLimit_getDate, rateLimit_heros, rateLimit_lol } = require('./middleware/rateLimitMiddleware');
 
-const { getSectionData, increaseCount, getAllSectionData } = require('./service/competitor');
+const { getSectionData, increaseCount, getAllSectionData, getUpdatedVotes } = require('./service/competitor');
 
 const helmet = require('helmet');
 const app = express();
@@ -99,6 +99,11 @@ app.get('/categorySuggestion/:name', async (req, res) => {
     }
 });
 
+app.get('/category/votesUpdated', async (req, res) => {
+    const data = await getUpdatedVotes()
+    console.log(data)
+})
+
 
 //put request
 app.put('/choice/lol/', rateLimit_lol(1, 86400), async (req, res) => {
@@ -134,7 +139,6 @@ app.put('/choice/heros/', rateLimit_heros(1, 86400), async (req, res) => {
         res.status(200).json('You have successfully voted.');
     } catch (err) {
         res.status(500).json({ err });
-
     }
 });
 

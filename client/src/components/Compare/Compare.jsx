@@ -40,16 +40,17 @@ export default function Compare({ topic, sectionData, setUpdate }) {
             console.log(err)
         }
 
-    }  
-    
+    }
+
 
     useEffect(() => {
         if (!localStorage.getItem('dataFetched')) {
             navigate('/comics')
         }
         // if (!localStorage.getItem('date')) {
-            GET('/getDate').then(res => checkDate(res))
+        GET('/getDate').then(res => checkDate(res))
         // }
+        GET('/category/votesUpdated').then(res => console.log(res))
     }, [])
 
     useEffect(() => {
