@@ -120,7 +120,7 @@ export default function Compare({ topic, sectionData, setUpdate, setSectionData 
                         />
 
                         {/* Info------------------------------------------------------------------------------------------------*/}
-                        <div className='idea'>i</div>
+                        {/* <div className='idea'>i</div> */}
 
                         {/* Navbar----------------------------------------------------------------------------------------------*/}
                         <Navbar />
