@@ -15,7 +15,6 @@ async function requester(method, url, data = null) {
         options.body = JSON.stringify(data);
     }
 
-    // Use AbortController for request timeout
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 5000);
     options.signal = controller.signal;

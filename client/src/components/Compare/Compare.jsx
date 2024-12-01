@@ -19,15 +19,12 @@ export default function Compare({ topic, sectionData, setUpdate, setSectionData 
     const [secondCompetitor, setSecondCompetitor] = useState([])
     const [updateTimer, setUpdateTimer] = useState(false)
 
-
-
     function resetTimer() {
         const now = Date.now();
-        const endTime = now + 1 * 60 * 1000; // Set timer to 1 minute (adjust as needed)
+        const endTime = now + 1 * 60 * 1000;
         localStorage.setItem('timerEndTime', endTime);
         setUpdateTimer(true);
     }
-
 
     const navigate = useNavigate();
 
@@ -42,8 +39,13 @@ export default function Compare({ topic, sectionData, setUpdate, setSectionData 
                 throw new Error('u already voted')
             }
             const data = await PUT(`/choice/${section}`, { name })
+
+
             if (!localStorage.getItem('valueTimer')) {
                 localStorage.setItem('valueTimer', true)
+            }
+            if (!localStorage.getItem(`${topic}-timer`)) {
+                localStorage.setItem(`${topic}-timer`, 36000)
             }
             if (data.error) {
                 throw new Error('to many requests!')
@@ -103,7 +105,15 @@ export default function Compare({ topic, sectionData, setUpdate, setSectionData 
                     <div className='catalog-sectionComp'>
 
                         {/* Timer-----------------------------------------------------------------------------------------*/}
-                        {hasVoted ? <Timer deleteStoreData={deleteAllStoredData} /> : null}
+                        {hasVoted ? (
+                            topic === 'lol' ? (
+                                <Timer topic={topic} deleteStoreData={deleteAllStoredData} />
+                            ) : topic === 'cars' ? (
+                                <Timer topic={topic} deleteStoreData={deleteAllStoredData} />
+                            ) : topic === 'heros' ? (
+                                <Timer topic={topic} deleteStoreData={deleteAllStoredData} />
+                            ) : null
+                        ) : null}
 
                         {/* First Battle----------------------------------------------------------------------------------*/}
                         <CompetitorCard

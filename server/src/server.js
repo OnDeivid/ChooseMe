@@ -15,7 +15,7 @@ const helmet = require('helmet');
 const app = express();
 
 const corsOptions = {
-    origin: ['https://choose-me.vercel.app'],
+    origin: ['https://choose-me.vercel.app', 'http://localhost:5173'],
 }
 
 app.use(helmet())
@@ -100,7 +100,7 @@ app.get('/categorySuggestion/:name', async (req, res) => {
 });
 
 // 600,000
-app.get('/category/votesUpdated', rateLimit_votesUpdated(1, 60), async (req, res) => {
+app.get('/category/votesUpdated', rateLimit_votesUpdated(1, 180), async (req, res) => {
 
     try {
         const data = await getUpdatedVotes()
@@ -114,7 +114,7 @@ app.get('/category/votesUpdated', rateLimit_votesUpdated(1, 60), async (req, res
 
 
 //put request
-app.put('/choice/lol/', rateLimit_lol(1, calculateTimeUntilNextDay()), async (req, res) => {
+app.put('/choice/lol/', rateLimit_lol(1, 36000), async (req, res) => {
     try {
         const { name } = req.body
         await increaseCount('lol', name)
@@ -125,7 +125,7 @@ app.put('/choice/lol/', rateLimit_lol(1, calculateTimeUntilNextDay()), async (re
     }
 });
 
-app.put('/choice/cars/', rateLimit_cars(1, calculateTimeUntilNextDay()), async (req, res) => {
+app.put('/choice/cars/', rateLimit_cars(1, 36000), async (req, res) => {
     try {
         const { name } = req.body
         await increaseCount('cars', name)
@@ -136,7 +136,7 @@ app.put('/choice/cars/', rateLimit_cars(1, calculateTimeUntilNextDay()), async (
     }
 });
 
-app.put('/choice/heros/', rateLimit_heros(1, calculateTimeUntilNextDay()), async (req, res) => {
+app.put('/choice/heros/', rateLimit_heros(1, 36000), async (req, res) => {
     try {
         const { name } = req.body
         await increaseCount('heros', name)

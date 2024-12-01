@@ -8,13 +8,13 @@ import bausff from '../src/assets/baus.webp'
 const sectionsData = [
     { name: 'twitch', image: twitch, },
     { name: 'comics', image: comics, },
-    { name: 'cars', image: onlyfans }
+    { name: 'goat', image: onlyfans }
 ]
 
 const sectionName = {
     streamers_lol: 'lol',
     streamers_csgo: 'lol',
-    cars: 'cars',
+    goat: 'goat',
     comics: 'comics'
 }
 
@@ -42,7 +42,7 @@ const streamersCompare = [
 ]
 
 
-const carsCompare = [
+const goatCompare = [
     { name: 'AUDI RS6', image: 'https://img.freepik.com/premium-photo/matte-black-audi-rs6-abt-sedan-parked-volcano_738944-3.jpg', },
     { name: 'vs', image: vs },
     { name: 'BMW M4', image: 'https://paultan.org/image/2024/05/2024-BMW-M4-CS-debut-75-850x1275.jpg', },
@@ -53,4 +53,4 @@ const carsCompare = [
 //     { name: 'Counter-Strike', image: 'https://logos-world.net/wp-content/uploads/2023/02/CSGO-Logo-500x281.png' },
 // ]
 
-export default { sectionsData, twitchCategory, comicsCategory, streamersCompare, carsCompare }
+export default { sectionsData, twitchCategory, comicsCategory, streamersCompare, goatCompare }
