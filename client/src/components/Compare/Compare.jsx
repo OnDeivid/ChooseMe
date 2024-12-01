@@ -17,6 +17,7 @@ export default function Compare({ topic, sectionData, setUpdate, setSectionData 
     const [selectedChoice, setSelectedChoice] = useState('');
     const [firstCompetitor, setFirstCompetitor] = useState([])
     const [secondCompetitor, setSecondCompetitor] = useState([])
+    const [updateTimer, setUpdateTimer] = useState(false)
 
 
 
@@ -24,7 +25,7 @@ export default function Compare({ topic, sectionData, setUpdate, setSectionData 
         const now = Date.now();
         const endTime = now + 1 * 60 * 1000; // Set timer to 1 minute (adjust as needed)
         localStorage.setItem('timerEndTime', endTime);
-        setUpdateTimer(true); // Trigger the timer update
+        setUpdateTimer(true);
     }
 
 

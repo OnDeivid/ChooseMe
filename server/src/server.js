@@ -114,8 +114,7 @@ app.get('/category/votesUpdated', rateLimit_votesUpdated(1, 60), async (req, res
 
 
 //put request
-app.put('/choice/lol/', rateLimit_lol(1, 86400), async (req, res) => {
-    console.log(86400)
+app.put('/choice/lol/', rateLimit_lol(1, calculateTimeUntilNextDay()), async (req, res) => {
     try {
         const { name } = req.body
         await increaseCount('lol', name)
@@ -126,8 +125,7 @@ app.put('/choice/lol/', rateLimit_lol(1, 86400), async (req, res) => {
     }
 });
 
-app.put('/choice/cars/', rateLimit_cars(1, 86400), async (req, res) => {
-    console.log(86400)
+app.put('/choice/cars/', rateLimit_cars(1, calculateTimeUntilNextDay()), async (req, res) => {
     try {
         const { name } = req.body
         await increaseCount('cars', name)
@@ -138,8 +136,7 @@ app.put('/choice/cars/', rateLimit_cars(1, 86400), async (req, res) => {
     }
 });
 
-app.put('/choice/heros/', rateLimit_heros(1, 86400), async (req, res) => {
-    console.log(86400)
+app.put('/choice/heros/', rateLimit_heros(1, calculateTimeUntilNextDay()), async (req, res) => {
     try {
         const { name } = req.body
         await increaseCount('heros', name)

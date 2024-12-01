@@ -5,7 +5,8 @@ const calculateTimeUntilNextDay = () => {
     const nextDay = moment.tz('Europe/Berlin').add(1, 'days').startOf('day');
 
     const difference = nextDay.diff(now);
-    return difference;
+    const differenceInSeconds = Math.floor(difference / 1000);
+    return differenceInSeconds;
 };
 
 module.exports = calculateTimeUntilNextDay;
