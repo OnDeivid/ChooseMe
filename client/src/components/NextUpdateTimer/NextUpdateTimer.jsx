@@ -4,7 +4,7 @@ export default function NextUpdateTimer() {
   const [timeLeft, setTimeLeft] = useState(() => {
     const savedEndTime = localStorage.getItem('timerEndTime');
     const now = Date.now();
-    return savedEndTime ? Math.max(0, savedEndTime - now) : 1 * 60 * 1000; // Default to 1 minute
+    return savedEndTime ? Math.max(0, savedEndTime - now) : 7 * 60 * 1000; 
   });
 
   useEffect(() => {

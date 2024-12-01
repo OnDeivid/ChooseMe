@@ -1,39 +1,38 @@
 import moment from 'moment-timezone';
 
-export function startCountdownToNextDay(deleteDataFunction, setCountDown, navigate, setHideTimer) {
-    // Get the current time in Berlin
-    const now = moment.tz('Europe/Berlin'); // Get current time in Berlin
+export function startCountdownToNextDay(deleteDataFunction, setCountDown, navigate, setHideTimer, topic) {
+    const now = moment.tz('Europe/Berlin');
 
-    // Set the next day at midnight (00:00:00)
-    const nextDay = now.clone().startOf('day').add(1, 'day'); // Start of the next day in Berlin
+    let targetTime = localStorage.getItem(`targetTime-${topic}`);
 
-    // Calculate the difference in milliseconds
-    const timeDifference = nextDay.diff(now); // Difference in milliseconds
+    if (!targetTime) {
+        targetTime = now.clone().add(10, 'hours').toISOString();
+        localStorage.setItem(`targetTime-${topic}`, targetTime);
+    }
 
-    // Initialize the countdown
+    targetTime = moment.tz(targetTime, 'Europe/Berlin'); 
+
+    const timeDifference = targetTime.diff(now);
     updateCountdown(timeDifference);
 
-    // Update the countdown every second
     const timerInterval = setInterval(() => {
-        const currentTime = moment.tz('Europe/Berlin'); // Get the current time again
-        const timeRemaining = nextDay.diff(currentTime); // Remaining time until the next day
+        const currentTime = moment.tz('Europe/Berlin');
+        const timeRemaining = targetTime.diff(currentTime);
 
         if (timeRemaining <= 0) {
             clearInterval(timerInterval);
-            deleteDataFunction();
+            localStorage.removeItem(topic)
+            localStorage.removeItem(`${topic}-Choice`)
             setHideTimer(true);
             navigate('/');
-            localStorage.clear()
-            const currentDate = moment.tz('Europe/Berlin').format('YYYY-MM-DD'); // Get current date in Berlin
-            localStorage.setItem('date', currentDate);
-
-            console.log("The next day has arrived!");
+          
+            console.log("10 hours have passed!");
         } else {
             setCountDown(updateCountdown(timeRemaining));
         }
-    }, 1000); // Update every second
+    }, 1000);
 
-    return { timerInterval }; // Return the interval ID to be cleared later
+    return { timerInterval };
 }
 
 function updateCountdown(milliseconds) {

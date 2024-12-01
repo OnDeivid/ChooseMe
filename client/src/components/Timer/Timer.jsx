@@ -4,13 +4,13 @@ import { startCountdownToNextDay } from '../../utils/countDown';
 import './Timer.css'
 import NextUpdateTimer from '../NextUpdateTimer/NextUpdateTimer';
 
-export default function Timer({ deleteStoreData }) {
+export default function Timer({ deleteStoreData, topic }) {
     const navigate = useNavigate();
     const [countDown, setCountDown] = useState()
     const [hideTimer, setHideTimer] = useState(false)
 
     useEffect(() => {
-        const timerInterval = startCountdownToNextDay(deleteStoreData, setCountDown, navigate, setHideTimer);
+        const timerInterval = startCountdownToNextDay(deleteStoreData, setCountDown, navigate, setHideTimer, topic);
         return () => {
             clearInterval(timerInterval.timerInterval);
         };
