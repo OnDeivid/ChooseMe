@@ -21,7 +21,7 @@ export default function Compare({ topic, sectionData, setUpdate, setSectionData 
 
     function resetTimer() {
         const now = Date.now();
-        const endTime = now + 1 * 60 * 1000;
+        const endTime = now + 7 * 60 * 1000;
         localStorage.setItem('timerEndTime', endTime);
         setUpdateTimer(true);
     }
