@@ -20,7 +20,6 @@ export default function Navbar() {
         { label: 'LoL', endpoint: '/lol' },
         { label: 'CS:GO', endpoint: '/csgo' },
         { label: 'Goat', endpoint: '/goat' },
-        { label: 'About', endpoint: '/about' }
     ];
 
     const MenuItem = ({ label, endpoint }) => (
