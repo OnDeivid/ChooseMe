@@ -1,32 +1,5 @@
 /* DESKTOP CSS */
 @media screen and (min-resolution:0.2dppx) and (max-resolution:6.65dppx) {
-
-    .topADs {
-        width: 65dvw;
-        height: 90px;
-        top: 0.38px;
-        background-color: rgb(243, 255, 5);
-        z-index: 300;
-        min-width: 970px;
-        position: absolute;
-
-    }
-
-    .bottomADS {
-        min-width: 970px;
-
-        width: 65dvw;
-        height: 13dvh;
-        height: 90px;
-        bottom: 1.2px;
-
-        align-self: center;
-        background-color: rgb(243, 255, 5);
-        z-index: 300;
-        position: absolute;
-
-    }
-
     .main-containerComp {
         background-color: var(--background-color-pick);
         /* background-color: #0e0052; */
@@ -203,39 +176,6 @@
         cursor: grab;
     }
 
-    .adsExplanationL {
-        background-color: transparent;
-
-        position: absolute;
-        width: 60%;
-        text-align: center;
-
-        padding-left: 1dvh;
-        padding-right: 1dvh;
-
-        top: 67%;
-        left: 16%;
-        font-size: 1.3dvh;
-
-    }
-
-    .adsExplanationR {
-        background-color: transparent;
-
-
-        position: absolute;
-        width: 60%;
-        text-align: center;
-
-        padding-left: 1dvh;
-        padding-right: 1dvh;
-
-        bottom: 67%;
-        left: 16%;
-        font-size: 1.3dvh;
-    }
-
-
     .winner {
         border-left: solid 0.25dvw rgb(255, 234, 0);
         border-right: solid 0.25dvw rgb(255, 234, 0);
@@ -320,25 +260,6 @@
 }
 
 @media only screen and (max-width: 767px) {
-
-    .topADs {
-        width: 100%;
-        background-color: red;
-        position: fixed;
-        height: 50px;
-        top: 0.1svh;
-        z-index: 400;
-    }
-
-    .bottomADS {
-        width: 320px;
-        height: 100px;
-        background-color: rgb(243, 255, 5);
-        z-index: 300;
-        bottom: 0.1svh;
-        position: fixed;
-    }
-
     .main-containerComp {
         background-color: rgb(231, 231, 231);
 
@@ -519,18 +440,6 @@
 
     }
 
-    .adsExplanationR {
-        background-color: transparent;
-        box-shadow: none;
-        top: 68.9%;
-    }
-
-    .adsExplanationL {
-        background-color: transparent;
-        box-shadow: none;
-        top: 68.9%;
-    }
-
 
     .winner {
         border-left: solid 0.25dvw rgb(255, 234, 0);
@@ -680,13 +589,6 @@
 /* TABLET CSS */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
 
-    .topADS {
-        width: 100%;
-        background-color: red;
-        position: absolute;
-        top: 1svh;
-    }
-
     .main-containerComp {
         background-color: var(--background-color-pick);
 
@@ -796,25 +698,6 @@
         right: -5.5dvw;
         z-index: 5;
     }
-
-    .adsExplanationL {
-        background-color: transparent;
-        width: 80%;
-
-        top: 70%;
-        left: 6%;
-        font-size: 1dvh;
-    }
-
-    .adsExplanationR {
-        background-color: transparent;
-        width: 80%;
-
-        bottom: 70%;
-        left: 6%;
-        font-size: 1dvh;
-    }
-
 
     .winner {
         border-left: solid 0.25dvw green;

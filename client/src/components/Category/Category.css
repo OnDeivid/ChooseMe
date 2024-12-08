@@ -8,27 +8,6 @@
     box-shadow: inset 0px 10px 150px rgba(0, 0, 0, 0.7);
 }
 
-.topADS {
-    position: fixed;
-    top: 10px;
-    left: 0px;
-
-    width: 100vw;
-    height: 10vh;
-    display: none;
-
-}
-
-.bottomADS-category {
-
-    position: fixed;
-    left: 0px;
-    bottom: 8vh;
-
-    width: 100vw;
-    height: 10vh;
-    display: none;
-}
 
 /* Container for catalog items */
 .content-container {

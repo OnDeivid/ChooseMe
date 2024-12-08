@@ -154,19 +154,9 @@ export default function Compare({ topic, sectionData, setUpdate, setSectionData 
                             <img className={`compare-image second ${checkWinnerStatus(2, selectedChoice, topic)}`}
                                 src={secondCompetitor?.img ? secondCompetitor.img : 'https://www.jowhareh.com/images/Jowhareh/galleries_9/poster_4a6186af-a71c-4f71-8f9e-2c3f3c6f7da1.jpeg'}
                                 alt={`${secondCompetitor?.name} comparison`} />
-
-
-                            {/* {secondCompetitor?.link ? <div className='donateRight donate' onClick={(e) => e.stopPropagation()}>EXSTRA VOTING <span className='adsExplanationR'>max to 5 increases</span></div> : null} */}
-
                         </div>
-
-                        {/* <div className='bottomADS' ></div>
-                        <div className='topADs' onClick={() => { deleteItem(); deleteAllStoredData(); }}></div> */}
-
                     </div>
-
                 </div>
-
             </main>
         </div>
     );

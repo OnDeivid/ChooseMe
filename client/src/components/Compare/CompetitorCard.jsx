@@ -20,9 +20,6 @@ export default function CompetitorCard({ competitor, hasVoted, checkWinnerStatus
             <img className={`compare-image first ${checkWinnerStatus(1, selectedChoice, topic)}`}
                 src={competitor?.img ? competitor.img : 'https://www.jowhareh.com/images/Jowhareh/galleries_9/poster_4a6186af-a71c-4f71-8f9e-2c3f3c6f7da1.jpeg'}
                 alt={`${competitor?.name} comparison`} />
-
-
-            {/* {competitor?.link ? <div className='donateLeft donate' onClick={(e) => e.stopPropagation()}>EXSTRA VOTING <span className='adsExplanationL'>max to 5 increases</span></div> : null} */}
         </div>
     )
 }
